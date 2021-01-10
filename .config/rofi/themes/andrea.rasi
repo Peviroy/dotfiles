@@ -15,7 +15,8 @@
     bg:               #282a36;
     blackselect:      #44475a;
     cyan:             #8be9fd;
-    font: "SpaceMono Nerd Font Black 12";
+    //font: "SpaceMono Nerd Font Black 12";
+    font: "Caskaydia Cove Nerd Font Complete Mono 12";
     background-color: @bg;
     show-icons: true;
     icon-theme: "Pop";

@@ -1,0 +1,27 @@
+configuration {
+        //Maximum number of lines to show
+	lines: 10;
+        //Width of menu
+	width: 1200;
+	// Left for man page
+	font: "JetbrainsMono 14";
+	bw: 0;
+	padding: 0;
+	sidebar-mode: true;
+	matching: "fuzzy";
+	line-margin: 0;
+	line-padding: 5;
+	separator-style: "none";
+	hide-scrollbar: false;
+
+	dpi: 144;
+	theme: "andrea";
+
+	modi: "drun,window,ssh";
+	display-window: "Jump";
+	display-ssh: "Connect";
+	display-drun: "Run";
+
+	show-icons: true;
+	icon-theme: "Papirus";
+}
