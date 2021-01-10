@@ -16,6 +16,10 @@ feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 # Polybar
 sh $HOME/.config/polybar/launch.sh
 
+# Message notifier
+/usr/bin/dunst &
+
+# core
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 
