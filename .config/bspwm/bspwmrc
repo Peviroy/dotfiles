@@ -7,6 +7,9 @@ export GDK_DPI_SCALE=1.5
 # Start compositer
 nohup picom -f >/dev/null 2>&1 &  # effct of fade
 
+# Set background image randonly with feh
+feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Virtual desktop setting; Also multi monitor supplied
