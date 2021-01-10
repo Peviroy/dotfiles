@@ -1,5 +1,8 @@
 #! /bin/sh
 
+#===
+#===== Auto start
+#===
 # For HiDPI; 1.5scale now
 xrandr --dpi 144
 export GDK_DPI_SCALE=1.5
@@ -10,13 +13,26 @@ nohup picom -f >/dev/null 2>&1 &  # effct of fade
 # Set background image randonly with feh
 feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 
+# Polybar
+sh $HOME/.config/polybar/launch.sh
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+
+#===
+#===== Bspwm rules
+#===
 # Virtual desktop setting; Also multi monitor supplied
 bspc monitor -d I II III IV V VI
 
 bspc config border_width         2
 bspc config window_gap           10
+
+# Padding config (Seems)
+#brpc config top_padding 36
+#bspc config left_padding 0
+#bspc config right_padding 0
+#bspc config bottom_padding 36
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
