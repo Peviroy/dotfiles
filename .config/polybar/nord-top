@@ -218,7 +218,8 @@ scroll-down = pulseaudio-control --volume-max 130 down
 
 
 [module/backlight]
-type = internal/xbacklight
+type = internal/backlight
+card = intel_backlight
 
 enable-scroll = true
 
