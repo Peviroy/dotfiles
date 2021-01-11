@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# this requires a service for clipmenu at /usr/lib/systemd/system
+# this requires a service for clipmenud
 service=$(systemctl is-active --user clipmenud)
 dmenu_launcher=rofi
 

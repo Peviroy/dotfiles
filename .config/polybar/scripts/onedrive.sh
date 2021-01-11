@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# this requires a service for onedrive at /usr/lib/systemd/system
+# this requires a service for onedrive
 service=$(systemctl is-active --user onedrive)
 
 

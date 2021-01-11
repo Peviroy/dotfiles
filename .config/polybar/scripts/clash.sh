@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# this requires a service for clash at /usr/lib/systemd/system
+# this requires a service for clash 
 service=$(systemctl is-active --user clash)
 
 
