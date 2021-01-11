@@ -1,11 +1,11 @@
 #!/bin/sh
 # shellcheck disable=SC2016,SC2059
 
-KEYBOARD_ID="AT Translated Set 2 keyboard"
+KEYBOARD_ID="NIZ BT5.0 Keyboard"
 
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
-METRIC=cpm
+METRIC=wpm
 FORMAT=" %d $METRIC"
 
 INTERVAL=20
@@ -14,7 +14,7 @@ INTERVAL=20
 # yourself. $3 is the key index. Use `xinput test "AT Translated Set 2 keyboard"`
 # to see key codes in real time.  Be sure to open a pull request for your
 # layout's condition!
-LAYOUT=qwerty
+LAYOUT=dontcare
 
 case "$LAYOUT" in
 	qwerty) CONDITION='($3 >= 10 && $3 <= 19) || ($3 >= 24 && $3 <= 33) || ($3 >= 37 && $3 <= 53) || ($3 >= 52 && $3 <= 58)'; ;;
