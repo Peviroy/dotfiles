@@ -42,22 +42,26 @@ super + m
 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
+#== A preat way to swap any nodes!
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest window
-super + g
-	bspc node -s biggest.window
+#super + g
+#	bspc node -s biggest.window
 
 #
 # state/flags
 #
 
 # set the window state
+#== Diff betweenn monocle layout and fullscreen mode
+#	former affecte all the nodes, while the latter affects only one
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
+#== Keyshort locked flag is essential
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
@@ -70,9 +74,10 @@ super + {_,shift + }{n,e,u,i}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+#super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
 
+#== a more simple and understantable swap way
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
