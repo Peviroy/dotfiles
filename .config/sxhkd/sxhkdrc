@@ -18,6 +18,10 @@ super + Escape
 super + p
 	feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 
+# open clipmenu
+super + alt + c
+	CM_LAUNCHER=rofi clipmenu
+
 
 #
 # bspwm hotkeys
