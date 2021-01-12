@@ -22,7 +22,9 @@ super + p
 super + alt + c
 	CM_LAUNCHER=rofi clipmenu
 
-
+# assign a certain keyboard shortcut to paste specific item. here my password
+super + alt + v
+	bash -c "xsel -ib < $HOME/.config/.passwd"
 #
 # bspwm hotkeys
 #
