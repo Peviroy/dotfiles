@@ -19,6 +19,9 @@ sh $HOME/.config/polybar/launch.sh
 # Message notifier
 /usr/bin/dunst &
 
+# Input method fcitx5
+nohup fcitx5 >/dev/null 2>&1 &
+
 # core
 pgrep -x sxhkd > /dev/null || sxhkd &
 
