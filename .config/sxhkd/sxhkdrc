@@ -20,7 +20,7 @@ super + p
 
 # reload polybar
 super + alt + p
-	pkill -x polybar && $HOME/.config/polybar/launch.sh
+        $HOME/.config/polybar/launch.sh
 
 # open clipmenu
 super + alt + c
