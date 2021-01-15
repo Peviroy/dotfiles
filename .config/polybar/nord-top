@@ -319,7 +319,7 @@ ramp-signal-3-underline = ${colors.success}
 type = custom/script
 
 exec = ~/.config/polybar/scripts/clash.sh
-tail = true
+interval = 1200
 
 click-left = ~/.config/polybar/scripts/clash.sh toggle
 
@@ -327,7 +327,7 @@ click-left = ~/.config/polybar/scripts/clash.sh toggle
 type = custom/script
 
 exec = ~/.config/polybar/scripts/onedrive.sh
-tail = true
+interval = 60
 
 click-left = ~/.config/polybar/scripts/onedrive.sh toggle
 
@@ -335,7 +335,6 @@ click-left = ~/.config/polybar/scripts/onedrive.sh toggle
 type = custom/script
 
 exec = ~/.config/polybar/scripts/clipmenu.sh
-tail = true
 
 click-left = ~/.config/polybar/scripts/clipmenu.sh menu
 click-right = ~/.config/polybar/scripts/clipmenu.sh toggle
