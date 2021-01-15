@@ -137,6 +137,7 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
+label-charging = %percentage%%
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.notify}
@@ -146,6 +147,8 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.notify}
+animation-discharging-framerate = 500
+label-discharging = %percentage%%
 
 label-full = 
 label-full-foreground = ${colors.success}
@@ -204,14 +207,9 @@ format-underline = ${colors.success}
 label-padding = 2
 label-foreground = ${colors.foreground}
 
-# Icons mixed from Font Awesome 5 and Material Icons
-# You can copy-paste your options for each possible action, which is more
-# trouble-free but repetitive, or apply only the relevant ones (for example
-# --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo:  Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:  Headphones" listen
+exec = pulseaudio-control --icons-volume "%{F#8FA67B},%{F#8FA67B}" --icon-muted "" --sink-nicknames-from "device.description" --format '$VOL_ICON ${VOL_LEVEL}%' listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
-click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
 scroll-up = pulseaudio-control --volume-max 130 up
 scroll-down = pulseaudio-control --volume-max 130 down
 
