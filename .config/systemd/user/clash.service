@@ -5,6 +5,8 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/clash
+StandardOutput=null
+StandardError=journal
 Restart=on-abort
 
 [Install]

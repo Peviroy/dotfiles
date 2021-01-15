@@ -19,7 +19,7 @@ ActivateKeys=
 DeactivateKeys=
 
 [Hotkey/TriggerKeys]
-0=Control+Control_R
+0=Control+space
 
 [Hotkey/PrevPage]
 0=Up
@@ -47,6 +47,10 @@ PreeditEnabledByDefault=True
 ShowInputMethodInformation=False
 # Show Input Method Information when changing focus
 showInputMethodInformationWhenFocusIn=False
+# Show compact input method information
+CompactInputMethodInformation=True
+# Show first input method information
+ShowFirstInputMethodInformation=True
 # Default page size
 DefaultPageSize=5
 # Force Enabled Addons
