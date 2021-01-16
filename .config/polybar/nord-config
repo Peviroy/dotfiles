@@ -50,7 +50,7 @@ top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget syste
 # Bottom modules
 bottom-left = powermenu info-hackspeed weather
 bottom-center = daily-poem
-bottom-right = 
+bottom-right = system-usb-udev
 
 systray-top = none
 systray-bottom = right
