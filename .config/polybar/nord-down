@@ -93,7 +93,7 @@ interval = 3
 
 format-connected = <label-connected>
 
-label-connected =  %downspeed:9%   %upspeed:9%
+label-connected =  %downspeed:5%   %upspeed:5%
 label-connected-foreground = ${colors.success}
 
 [module/temperature]
@@ -136,6 +136,6 @@ tail = true
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
-interval = 600
+interval = 1800
 
 label-font = 4

@@ -50,7 +50,7 @@ top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget syste
 # Bottom modules
 bottom-left = powermenu info-hackspeed weather
 bottom-center = daily-poem
-bottom-right = temperature
+bottom-right = 
 
 systray-top = none
 systray-bottom = right
@@ -89,15 +89,11 @@ base-temperature = 20
 # Threshold temperature to display warning label (in degrees celsius)
 warn-temperature = 70
 
-# GitHub personal token, generate from https://github.com/settings/tokens/new?scopes=notifications&description=Notifier+for+Polybar
-# where select at least `notifications` option
-github-token = 180fdf24f654e9af3b40876d3ddec50d2a704db1
-
 # notify module setting
-notify-click-left = xdotool key control+grave
+notify-click-left = 
 
 # network module setting
-network-click-left = i3-msg workspace 2
+network-click-left = 
 
 # i3
 # Only show workspaces defined on the same output as the bar
