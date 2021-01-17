@@ -1,11 +1,16 @@
 #! /bin/sh
 
-#===
+#==============================
 #===== Auto start
-#===
-# For HiDPI; 1.5scale now
+#==============================
+# HiDPI; 1.5scale;
 xrandr --dpi 144
+
+# GDK app scale
 export GDK_DPI_SCALE=1.5
+
+# QT app theme and scale VARIANT (optional | QT APP DEMAND)
+export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
 
 # Start compositer
 nohup picom -f >/dev/null 2>&1 &  # effct of fade
@@ -19,7 +24,7 @@ sh $HOME/.config/polybar/launch.sh
 # Message notifier
 /usr/bin/dunst &
 
-# Input method fcitx5
+# Input method fcitx5 (optional | IM DEMAND)
 nohup fcitx5 >/dev/null 2>&1 &
 
 # core
@@ -28,9 +33,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 
 
-#===
+#========================================
 #===== Bspwm rules
-#===
+#========================================
 # Virtual desktop setting; Also multi monitor supplied
 bspc monitor -d I II III IV V VI
 

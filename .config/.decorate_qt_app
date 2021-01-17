@@ -1,0 +1,7 @@
+#/bin/bash
+
+# i'd like it not to be scaled which affected by xrander
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+# core; decorate with themes choosen with qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
