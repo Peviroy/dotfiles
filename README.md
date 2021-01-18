@@ -629,6 +629,8 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
 
 ## Polybar
 
+<br>
+
 ### brightness control 
 
 `@nord-top  [module/backlight]`
@@ -637,7 +639,7 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
 
 不过先摆结论：若显卡受`xorg-xbacklight`(dependency)支持，那么应当是比较轻松的。若不是，则需要一番功夫。
 
-#### Sept1
+**`Sept1`**
 
 首先遵照[@aid1090x/polybar-themes](https://github.com/adi1090x/polybar-themes#troubleshooting)给出的troubleshooting，这是相当有参考意义的：
 
@@ -653,13 +655,11 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
 
 如果能正常使用鼠标滚轮控制，那么恭喜开箱即用。如果不是，只得继续。注：仅在intel上测试，其他理论可行。
 
-
-
 如果intel无法使用 `type = internal/xbacklight`（这出现在iris Xe上），那么当改成 `type = internal/backlight`。
 
 而若图标甚至没有显示，大概率是card不对而使得模块无法被检测。
 
-#### Step2
+**`Step2`**
 
 使用`type = internal/backlight`来调整亮度本质上是在直接更改brightness文件，其路径为`/sys/class/backlight<your-vender>/bightness`，如果关注polybar的debug输出，应当能注意到`permission denied`,这是因为polybar企图直接修改只被root修改的brightness文件。这当如何？直接sudo polybar吗？这显然是不被允许的。sudo不是plan B。
 
@@ -693,7 +693,7 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
 
 <br><br>
 
-### Clipmenu
+### clipmenu
 
 `@nord-top [module/clipmenu-widget]`
 
@@ -743,7 +743,17 @@ widget是通过systemd来同clipmenu沟通的，因此需要手动创建一个sy
    $ systemd --user enable clipmenu
    ```
 
+<br>
 
+<br>
 
+### daily-poem
 
+`@tl;dr: display chinese poems`
+
+我的polybar最初是借鉴于[Yucklys/polybar-nord-theme](https://github.com/Yucklys/polybar-nord-theme#daily-poem)的,而之所以为之吸引,很大部分原因要归结于daily-poem这个module.
+
+虽然仅是个抓取内容的脚本,但这仍不失为一个很棒的脚本.因为这解决了用户自行借助**今日诗歌**Token来抓取的繁琐.
+
+脚本daily-poem足有8M大小,由于已经封装好所以没能看见内容.兴许是一个nodejs封装的cli?
 
