@@ -1,6 +1,6 @@
 # <p align="center">MY DOTFILES </p> 
 
----
+## Preface
 
 所谓兴致匆匆也不过如是了.
 
@@ -8,7 +8,7 @@
 
 我深知在一个将不断迭代的文档中记录下日期并不合适.只是在面对目前这份近5k字却分明只是刚刚起步的文章时,我无法置身事外写着陈述性的文字.
 
-
+<br/>
 
 曾是一名plasma用户,这段历时足足两年有余. 而又是什么因素在催促着我这个连blog都能弃坑的懒癌患者在此进行着微不足道的输出呢? 这大概有三方面.
 
@@ -18,28 +18,38 @@
 
 另外,在目前正在进行的配置过程中,我深感开源社区的伟大,也是由此我方才在安装完Arch,配置完KDE与初步开展Bspwm后克服阻力开启此文.
 
-
+<br>
 
 也是有些魔幻的,不就之前还是个"能用就行nano党",还是个"kde真好看",还是一个"qwerty能用换什么键位".转眼就采用了截然相反的文本输入方法,桌面操作方案,键位布局.这一定程度上得益于时值假期,能够有充足的时间去捣腾,去适应阵痛.这也一定程度让我明白改变可以是巨大的.当然了,样本不过是未及核心的毛皮之变,但终归是提供了一种可能性的愿景.
 
+<br>
 
+目前的文档其实是十分不完善的,不仅体现在完成度上,也体现在内容上.作为一个README这只能是作为一个过渡,而后自然是要以更简练的语言去描述.但这并非是没有意义的.README正文的进度将在未来开启,而在此之前先让我们走完这段心路.
 
-目前的文档其实是十分不完善的,不仅体现在完成度上,也体现在内容上.作为一个README这只能是作为一个过渡,而后自然是要以更简练的语言去描述.但并非是没有意义的.README正文的进度将在未来开启,而在此之前先让我们走完这段心路.
+<br>
 
-
-
+<br>
 
 
 
 # Configure Arch & Bspwm & Polybar
 
-## Arch install
+### Hardware environment
+
+* CPU: i5-1135G7
+* GPU: intel Iris Xe (using i915driver)
+* GPU: Nvidia MX450
+* Resolution: 2880x1800
+
+
+
+## Arch installing(pre-in-post )
 
 setfont ter-132n
 
 
 
-
+<br>
 
 ### Time modification confict with dual boot
 
@@ -57,9 +67,9 @@ Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsU
 #timedatectl set-local-rtc 1 --adjust-system-clock
 ```
 
+<br>
 
-
-
+<br>
 
 ### Hibernate
 
@@ -137,9 +147,7 @@ sudo mkinitcpio -P
 
 [Arch wiki:Power management/Suspend and hibernate](https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate)
 
-
-
-
+<br><br>
 
 ### Audio
 
@@ -163,9 +171,7 @@ $sudo pacman -S sof-firmware alsa-ucm-conf
 $sudo pacman -S pulseaudio-alsa pulseaudio-bluetooth
 ```
 
-
-
-
+<br><br>
 
 ### Bluetooth control
 
@@ -256,17 +262,13 @@ bluetoothd[5556]: a2dp-sink profile connect failed for 00:1D:43:6D:03:26: Protoc
 
 这有几种情况,而最为寻常的是没有安装[pulseaudio-bluetooth](https://archlinux.org/packages/?name=pulseaudio-bluetooth) (Audio模块已经提示)，此时安装后重启pulseaudio服务(systemctl --user restart pulseaudio.service)再度测试测试。而其他情况则相当繁琐，此时最好详细查询下[wiki](https://wiki.archlinux.org/index.php/bluetooth_headset#Pairing_fails_with_AuthenticationFailed)
 
-
-
 **`参考`**
 
 [Archwiki-bluetooth](https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot)
 
 [Archwiki-bluetooth headset](https://wiki.archlinux.org/index.php/bluetooth_headset)
 
-
-
-
+<br><br>
 
 ### High DPI
 
@@ -311,17 +313,57 @@ bluetoothd[5556]: a2dp-sink profile connect failed for 00:1D:43:6D:03:26: Protoc
 
 [Arch Wiki-HiDPI](https://wiki.archlinux.org/index.php/HiDPI)
 
+<br><br>
+
+### (Nvidia) optimus-manager
+
+在使用manjaro时,便使用着optimus技术来控制双显卡了,而这也是我当时选择manjaro的一个最主要原因:manjaro官方支持显卡驱动的快捷安装方式.这最初是`Bumblebee`而后是`Prime`.
+
+但bumblebee性能释放不行,而prime在arch下没有manjaro社区版本因而无法`use both`, 那如何呢?`nouveau`比bumblebee还不行,`nvidia-xrun`又是独立开一个session,这不符合hybrid的预期.
+
+最终的选择是`optimus-manager`.这是个unofficial的方案,但目前已经有了相当多的co-contributors,虽然曾有所顾虑,但实际上体验相当地流畅,性能表现不输于win10端.总之,对于**arch\arch-based,Xorg**用户,力荐.
+
+**`how to install`**
+
+开发者提供了[aur]optimus-manager,但由于需要同时安装python package dependency(python滚动更新), 现成的wheel可能会有version conflict.所以最好的方式是自己编译.
+
+```sh
+$ git clone https://aur.archlinux.org/optimus-manager.git
+$ cd optimus-manager
+$ makepkg -si
+$ reboot
+```
+
+**`how to use`**
+
+其提供了intel, hybrid, nvidia的选项. 对于我来说hybrid是更好的,毕竟使用nvidia会涉及到重新配置图形显示相关,且并不方便.
+
+```:sh
+$ optimus-manager -switch hybrid
+```
+
+hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
+
+* 通过在程序前添加下列环境
+
+  ```
+  # dont export global
+  __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" __GL_SHOW_GRAPHICS_OSD=1
+  ```
+
+  
+
+  
+
 ---
 
-
-
-
+<br><br>
 
 ## Bspwm
 
 不仅仅是bspwm的配置，或者称之为`post-arch-install`更为合适。因为原生的arch是精简的，bspwm也是，因此如果不加以配置，乃至连curl都是不支持的。所以进行一定的配置是必要的，但我将**这些配置统统放在bspwm下**不是想要打造bspwm成为一个desktop environment。而是期望以bspwm为中心，建造一个符合心意的GUI以及CLI环境。
 
-
+<br><br>
 
 ### feh
 
@@ -340,7 +382,7 @@ feh之外nitrogen也是有名的壁纸管理器，但feh好在集成了随即选
 feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 ```
 
-
+<br><br>
 
 ### Set cursor themes
 
@@ -376,17 +418,13 @@ CursorTheme= Breeze_Snow
 
 Theme,不仅是cursor theme有系统级别作用域也有用户级.前者路径为`/usr/share/themes`而后者路径为`~/.local/share/themes`. 或许Xresources使用用户级即可,但对于Display manager来说,唯有使用系统级才行.
 
-此处的`Breeze_Snow`可以经搜索`breeze-icons`来安装.而若是没有现成的package又希望能安装在/usr/share/themes下,那么需要自行创建package,否则未必被系统认可.
+此处的`Breeze_Snow`可以经搜索`breeze-icons`来安装.而若是没有现成的package又希望能安装在/usr/share/themes下,那么需要自行创建package,否则未必被系统认可
 
-
-
-
+<br><br>
 
 ### rofi
 
-
-
-
+<br><br>
 
 ### xsel
 
@@ -411,9 +449,7 @@ super + alt + v
          bash -c "xsel -ib < $HOME/.config/.passwd"
 ```
 
-
-
-
+<br><br>
 
 ### fcitx5-im
 
@@ -429,9 +465,7 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
 * Theme - fcitx5-material-color
 * Dict - fcitx5-pinyin-zhwiki ....
 
-
-
-
+<br><br>
 
 ### Apply gtk and qt themes to APPs
 
@@ -550,12 +584,12 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
 5. Set env variant
 
    add `export QT_QPA_PLATFORMTHEME=qt5ct` to the login script,e.g. bspwmrc
+   
+   <br><br>
 
 ---
 
-
-
-
+<br><br>
 
 ## Polybar
 
@@ -621,9 +655,7 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight(yours)", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
    ```
 
-
-
-
+<br><br>
 
 ### Clipmenu
 
