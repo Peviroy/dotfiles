@@ -51,7 +51,7 @@ setfont ter-132n
 
 <br>
 
-### Time modification confict with dual boot
+### [Time] confict
 
 Win10是用local time, 而Arch使用universal time.若是不加以处理，其中一个OS的正确时间将导致另一个的失准。判断所使用的linux distro.
 
@@ -71,7 +71,7 @@ Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsU
 
 <br>
 
-### Hibernate
+### [Suspend]Hibernate
 
 作为一个坚定的休眠党，`suspend to disk(hibernate)`是无法拒绝的，也正因此才在最开始分区时分配了内存大小的SWAP分区。
 
@@ -149,7 +149,7 @@ sudo mkinitcpio -P
 
 <br><br>
 
-### Audio
+### [Driver]Audio
 
 arch-base并没有提供声卡驱动，因此若需要手动安装。在此过程中将遇见两个重要的名词：[Advanced Linux Sound Architecture](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) (**ALSA**) 与[PulseAudio](https://en.wikipedia.org/wiki/PulseAudio)。前者作为Drive不过也provide library作为userpace component(有时显得和PulseAudio抢工作)，后者作为Sound server是驱动与应用之间的媒介。
 
@@ -173,7 +173,7 @@ $sudo pacman -S pulseaudio-alsa pulseaudio-bluetooth
 
 <br><br>
 
-### Bluetooth control
+### [Driver]Bluetooth
 
 熟悉了DE下全GUI的蓝牙控制方式，难免会对CLI方式操作蓝牙有所抵触，但请相信，使用`bluetoothctl`不仅相当容易上手而且将让我们看到此前从未关注的内容。
 
@@ -270,9 +270,37 @@ bluetoothd[5556]: a2dp-sink profile connect failed for 00:1D:43:6D:03:26: Protoc
 
 <br><br>
 
-### High DPI
+### [Shell]Share rc
 
-在完成安装之后，兴冲冲地reboot而后login session,虽然早已经抱好了将面对简陋至极的页面预期，但当真正的以登陆时的dm为背景（没有配置壁纸），且字体极小的展示效果时（HiDPI屏幕），小心脏仍受到了不小的打击。
+虽然绝大多数linux distro.还是将bash作为loginshell,但恐怕已经很少人单纯使用bash了.而在多个shell下我们自然是希望它们能共享一些基础性配置而非每个shell都分别进行重复性配置.对此,我们无需大刀阔斧,只需进行一小部分删改即可.当然前提是shell在一些语法上有所兼容,至于fish和bash之间,便不建议了.此处以zsh and bash为例.
+
+**`Shell loading order`**
+
+包括zsh的配置在内，bash以及系统级的config file让整个shellrc相当复杂。而这些文件并非同时加载的，而是有取舍，有[先后顺序](https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/)。而理解了加载链才能让我们不至于配置写错地方而没有被加载.
+
+根据上面所述[文章](https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/), 无论在login还是non-login下,zshrc都是被加载的,而bash则不存在同时在两种情况下都加载的文件.不过还好,因为使用zsh作为主力shell,bash的问题是容易解决的.
+
+**`My configuration`**
+
+使用`~/.profile`(read by bash when login)作为公共项,让`~/.zshrc`与`~/.bashrc`读取其中内容.
+
+In `~/.bashrc`:
+
+```sh
+source ~/.profile
+```
+
+In `~/.zshrc`:
+
+```sh
+[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+```
+
+<br><br>
+
+### [Display]High DPI
+
+在完成安装之后，兴冲冲地reboot而后login session,虽然早已经抱好了将面对简陋至极的页面预期，但当真正看到登陆时的以dm为背景（没有配置壁纸），且字体极小的展示效果时（HiDPI屏幕），小心脏仍受到了不小的打击。
 
 好吧，先撇开美化问题，过小的字体显然是无法接受的，而这一切源自于我们的这块HiDPI display屏幕。因为默认是没有缩放改变的，所有的元素占据了缺省的像素点，而因`Dots Per Inch（DPI）`过大，那么‘元素’就将显小。所以这是过高分辨率带来的适配性问题。若彼时的我或此时的你没有此烦恼那么大可跳过。不过此处的方法对于希望在WM环境下进行`resolution scaling`还是有一些意义的。
 
@@ -315,7 +343,7 @@ bluetoothd[5556]: a2dp-sink profile connect failed for 00:1D:43:6D:03:26: Protoc
 
 <br><br>
 
-### (Nvidia) optimus-manager
+### [Nvidia]optimus-manager
 
 在使用manjaro时,便使用着optimus技术来控制双显卡了,而这也是我当时选择manjaro的一个最主要原因:manjaro官方支持显卡驱动的快捷安装方式.这最初是`Bumblebee`而后是`Prime`.
 
@@ -325,7 +353,7 @@ bluetoothd[5556]: a2dp-sink profile connect failed for 00:1D:43:6D:03:26: Protoc
 
 **`how to install`**
 
-开发者提供了[aur]optimus-manager,但由于需要同时安装python package dependency(python滚动更新), 现成的wheel可能会有version conflict.所以最好的方式是自己编译.
+开发者提供了[aur]optimus-manager,但由于需要同时安装python package dependency(python滚动更新), 现成的wheel可能会有`python version conflict`.所以最好的方式是自己编译.
 
 ```sh
 $ git clone https://aur.archlinux.org/optimus-manager.git
@@ -351,9 +379,7 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
   __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" __GL_SHOW_GRAPHICS_OSD=1
   ```
 
-  
-
-  
+  <br><br>
 
 ---
 
