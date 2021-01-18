@@ -389,7 +389,7 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
 
 不仅仅是bspwm的配置，或者称之为`post-arch-install`更为合适。因为原生的arch是精简的，bspwm也是，因此如果不加以配置，乃至连curl都是不支持的。所以进行一定的配置是必要的，但我将**这些配置统统放在bspwm下**不是想要打造bspwm成为一个desktop environment。而是期望以bspwm为中心，建造一个符合心意的GUI以及CLI环境。
 
-<br><br>
+<br>
 
 ### feh
 
@@ -407,6 +407,16 @@ feh之外nitrogen也是有名的壁纸管理器，但feh好在集成了随即选
 # Set background image randonly with feh
 feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 ```
+
+<br>
+
+<br>
+
+### vim
+
+`@tl;dr: needless to say`
+
+如果说我为何要换一套键盘布局,为何要换一套桌面模式,其目的就在于追求对以vim为核心之一的键盘操控方案.我诚欲有所建言,然钻研不深,来我这看vim教程是不合适的.
 
 <br><br>
 
