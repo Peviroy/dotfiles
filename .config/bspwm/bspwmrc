@@ -16,7 +16,11 @@ export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
 nohup picom -f >/dev/null 2>&1 &  # effct of fade
 
 # Set background image randonly with feh
-feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
+#feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
+wal  -ste -lq -i $HOME/Pictures/Home_Slide
+
+# Blur desktop wallpaper when windows are open
+sh $HOME/Scripts/wallblur.sh &>/dev/null &
 
 # Polybar
 sh $HOME/.config/polybar/launch.sh

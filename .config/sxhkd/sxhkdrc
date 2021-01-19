@@ -8,19 +8,20 @@ super + Return
 
 # program launcher
 super + @space
-        rofi -combi-modi drun, window -show combi
+  rofi -combi-modi drun, window -show combi
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 # change background image randomly
+#feh --bg-fill --randomize $HOME/Pictures/Home_Slide/*
 super + p
-	feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
+	wal  -ste -lq -i $HOME/Pictures/Home_Slide
 
 # reload polybar
 super + alt + p
-        $HOME/.config/polybar/launch.sh
+  $HOME/.config/polybar/launch.sh
 
 # open clipmenu
 super + alt + c

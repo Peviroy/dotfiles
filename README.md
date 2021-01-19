@@ -391,7 +391,7 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
 
 <br>
 
-### [Wallpaper] feh
+### [Wallpaper, blur] feh & pywal
 
 `@tl;dr: wallpaper manager and image viewer `
 
@@ -407,6 +407,66 @@ feh之外nitrogen也是有名的壁纸管理器，但feh好在集成了随即选
 # Set background image randonly with feh
 feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 ```
+
+<br>
+
+**`Update for pywal`**
+
+原以为pywal使用来提取color scheme的,远没有想到其还能用于设置壁纸.
+
+若是但从壁纸管理角度来看,pywal的功能面是不如feh.但其提取color scheme的功能带来了相当多的可拓展性.不过目前我并不打算贸然使用此功能,毕竟色彩搭配是需要花费一定经历的.
+
+而我之所以会找到pywal源自于我对于毛玻璃效果或退而求其次的模糊效果的追寻.窗口渲染器picom的blur相对有些bad performance,毕竟要对每个窗口负责. 不过若是**让壁纸去模糊**会是一个折衷的选择.
+
+对此我找到了两个相应的脚本,一个是[ngynLk@feh-blur-wallpaper](https://github.com/ngynLk/feh-blur-wallpaper)(baed on rstacruz's), 另一个是      兼容了pywal的[mut-ex@wallblur](https://github.com/mut-ex/wallblur).当然两者底层逻辑都是使用feh来展示模糊处理后的壁纸,但前者虽然开销较小,但模糊的效果并不如后者自然.
+
+* feh-blur-wallpaper
+
+  make feh cache itself: 
+
+  ```
+  feh --bg-fill --no-fehbg   -> feh --bg-fill
+  ```
+
+  ```
+  # add to startup file
+  /path/to/feh-blur -d
+  ```
+
+* wallblur
+
+  replcae feh with pywal
+
+  ```
+  wal  -ste -lq -i <imagedir>
+  # s:dont change termical color
+  # t:dont change tty color
+  # e:dont reloade gtk/xrdb/i3/sway/polybar 
+  # l:generate lightcolor scheme (while i wont use it now)
+  # q:quiet
+  # i:indicate to the image or directory 
+  ```
+
+  ```
+  # add to startup file
+  /path/to/wallbulr.sh &
+  ```
+
+**`Dependencies`**
+
+For feh-blur-wallpaper
+
+* ```
+  graphicsmagick wmctrl feh
+  ```
+
+For wallblur:
+
+* ```
+  imagemagick wmctrl feh python-wallblur(python)
+  ```
+
+
 
 <br>
 
