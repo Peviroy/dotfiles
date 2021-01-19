@@ -391,7 +391,7 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
 
 <br>
 
-### feh
+### [Wallpaper] feh
 
 `@tl;dr: wallpaper manager and image viewer `
 
@@ -399,7 +399,7 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
 
 feh之外nitrogen也是有名的壁纸管理器，但feh好在集成了随即选择壁纸的功能，这让我们能在注册快捷键后一键切换壁纸。同时这也能胜任精简图片浏览器，且sidebar而能够沉浸式展示图片。
 
-**`Wallpaper at login`**
+**`Wallpaper starts at login`**
 
 ```sh
 ~/.config/bspwmrc
@@ -412,7 +412,7 @@ feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 
 <br>
 
-### vim
+### [Core] vim
 
 `@tl;dr: needless to say`
 
@@ -420,7 +420,54 @@ feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 
 <br><br>
 
-### Set cursor themes
+
+
+### [Launcher] rofi
+
+<br><br>
+
+### [Copaste] xsel
+
+`@tl;dr： get a fixed string into the clipboard`
+
+如果使用过Gnome、Plasma等桌面，想必使用过一键输出密码，毕竟权限密码记得长了的话还是快捷键来得方便。而bepwm是concise的，没有提供相关功能。
+
+`xsel`是这么介绍自己的：Manipulate the X selection。这么说或许有些晦涩，换句话说，可以这么解释：
+
+> The simple and versatile xsel utility bridges the gap between the Unix  pipeline and the clipboard functionality of the X Window System.    
+>
+> @Chad Perrin/Use xsel to copy text between CLI and GUI
+
+于是通过xsel, 得以轻松地将字段输出到剪切板，而后只需paste即可。
+
+#### how to use
+
+在sxhkd中注册快捷键如下：
+
+```
+super + alt + v
+         bash -c "xsel -ib < $HOME/.config/.passwd"
+```
+
+<br><br>
+
+### [IM] fcitx5-im
+
+`@tl;dr: may be a new fcitx better for Chinese user`
+
+曾使用过fcitx+rime, 这一度是我的主力输入法。而我抱着侥幸的心理安装了fcitx5后,其凭借其丝滑与良好的词库反馈让我成功真香。
+
+I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 for a while, its fluenquency as well as its great dictionaries conquer me wholely. See [拥抱 Fcitx5](https://blog.coelacanthus.moe/tech/welcome-to-fcitx5/) for detail.
+
+#### dependency
+
+* Main - fcitx5-im
+* Theme - fcitx5-material-color
+* Dict - fcitx5-pinyin-zhwiki ....
+
+<br><br>
+
+### [Theme] set cursor themes
 
 `@tl;dr:  set cursor for Xresourcer and display managers` 
 
@@ -458,54 +505,9 @@ Theme,不仅是cursor theme有系统级别作用域也有用户级.前者路径�
 
 <br><br>
 
-### rofi
+### [Theme] apply gtk and qt themes to APPs
 
-<br><br>
-
-### xsel
-
-`@tl;dr： get a fixed string into the clipboard`
-
-如果使用过Gnome、Plasma等桌面，想必使用过一键输出密码，毕竟权限密码记得长了的话还是快捷键来得方便。而bepwm是concise的，没有提供相关功能。
-
-`xsel`是这么介绍自己的：Manipulate the X selection。这么说或许有些晦涩，换句话说，可以这么解释：
-
-> The simple and versatile xsel utility bridges the gap between the Unix  pipeline and the clipboard functionality of the X Window System.    
->
-> @Chad Perrin/Use xsel to copy text between CLI and GUI
-
-于是通过xsel, 得以轻松地将字段输出到剪切板，而后只需paste即可。
-
-#### how to use
-
-在sxhkd中注册快捷键如下：
-
-```
-super + alt + v
-         bash -c "xsel -ib < $HOME/.config/.passwd"
-```
-
-<br><br>
-
-### fcitx5-im
-
-`@tl;dr: may be a new fcitx better for Chinese user`
-
-曾使用过fcitx+rime, 这一度是我的主力输入法。而我抱着侥幸的心理安装了fcitx5后,其凭借其丝滑与良好的词库反馈让我成功真香。
-
-I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 for a while, its fluenquency as well as its great dictionaries conquer me wholely. See [拥抱 Fcitx5](https://blog.coelacanthus.moe/tech/welcome-to-fcitx5/) for detail.
-
-#### dependency
-
-* Main - fcitx5-im
-* Theme - fcitx5-material-color
-* Dict - fcitx5-pinyin-zhwiki ....
-
-<br><br>
-
-### Apply gtk and qt themes to APPs
-
-`@tl;dr: it take pains to do this but worthwhile`
+`@tl;dr: it may take pains to do this but worthwhile`
 
 这或许听起来有些奇怪,毕竟之所以追求使用tilling window manager就是冲着键盘操作为核心去的,我们可能期望用着终端模拟器做任何事,而gtk和qt所写的APP都是GUI.
 
@@ -622,6 +624,77 @@ I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 f
    add `export QT_QPA_PLATFORMTHEME=qt5ct` to the login script,e.g. bspwmrc
    
    <br><br>
+
+### [App] dolphin
+
+`@tl;dr: just a good-looking file manager`
+
+[前面](#Apply gtk and qt themes to APPs)的目的之一就是在为dolphin做decoration.虽然终端下有更强大的file manager---ranger可以便捷化文件管理,但....或许是出于情怀吧.
+
+<br>
+
+<br>
+
+### [About sudo] and npm 
+
+**`intro.`**
+
+在期望安装全局npm package时，我们需要使用`npm install -g`，但往往权限不足(默认安装到/usr下)，因此要搭配上`sudo`。而若所有的包管理器全然如此，那么便容易认为理所当然，但`yarn global`待给了我们不一样的结果。
+
+`npm`和`yarn`对待global packages的理念是如此不同,以至于我们不得不去思考其利弊.显然可以这么理解:前者认为global应当于所有用户的所以project，而后者认为仅对于单个用户的所有project。
+
+若是从这一角度出发,那么对于我们而言,yarn的理念是更符合实际情况的.不过还可以从另一个角度出发,也就是说sudo的角度.
+
+普遍的使用sudo来配合npm的情况是，`if something doesn‘t work，try it with sudo.`。但实际上，sudo并非所有问题的解答方案。`npm install -g`便是一个例子。root(sudo)之所以拥有特权，在于其承担了相应的责任。若是无视责任而滥用权利，那么这绝非`sudo`的使用方法。换句话说,npm的package是开放的,若是不明不白地将某一个package安装成为系统级(global)其中的风险是相当大的.
+
+应当遵循的原则是，仅仅在明确知晓指令将做什么时方才使用sudo。
+
+**所以最佳的实践方式应当是将global package安装到用户级而非系统级.**
+
+**`npm -g at user wide`**
+
+这涉及到几个方面:创建文件夹用于保存global packages; 指示npm知晓文件夹用以**存储**(npm -- prefix)， **检索**(shell -- NODE_PATH， MANPATH)， **执行**(shell -- PATH)
+
+1. Create a directory for your global packages
+
+```sh
+mkdir "${HOME}/.npm-packages"
+```
+
+2. Reference this directory for future usage in your `.bashrc`/`.zshrc`:
+
+```sh
+NPM_PACKAGES="${HOME}/.npm-packages"
+```
+
+3. Indicate to `npm` where to store your globally installed package. In your `$HOME/.npmrc` file add:
+
+```sh
+prefix=${HOME}/.npm-packages
+```
+
+4. Ensure `node` will find them. Add the following to your `.bashrc`/`.zshrc`:
+
+```sh
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+```
+
+5. Ensure you'll find installed binaries and man pages. Add the following to your `.bashrc`/`.zshrc`:
+
+```sh
+PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+```
+
+**`npm environment -- nvm`**
+
+上面的步骤是相对多步的,不过若是采用安装到用户级的environment manager来处理,便会简便很多.
+
+npm环境管理工具`nvm`,可以理解成python的venv. 其出发点在于解决nodejs版本问题(有些nodejs包需要特定nodejs版本),因此会在用户权限范围内创建各种独立的环境.这从另一个手段解决了npm -g的危机.
+
+<br><br>
 
 ---
 

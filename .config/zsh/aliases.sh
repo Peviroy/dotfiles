@@ -7,6 +7,7 @@ alias pf='pfetch'
 alias nf='neofetch'
 
 alias ra='ranger'
+alias ph='dolphin'
 alias lg='lazygit'
 
 alias ym='yadm'
