@@ -6,9 +6,9 @@
 super + Return
 	st
 
-# program launcher
-super + @space
-  rofi -combi-modi drun, window -show combi
+# powerful launcher!
+ctrl + @space
+  rofi -modi file-browser,run,ssh,combi -combi-modi drun,window -show combi
 
 # make sxhkd reload its configuration files:
 super + Escape
