@@ -1,4 +1,4 @@
-#vim:ft=dosini
+# vim:ft=dosini
 
 [config]
 # DPI value for HiDPI screen
@@ -43,8 +43,8 @@ wm-restack = bspwm
 # clipmenu-widget: showing clipmenu service
 
 # Top modules
-top-left = bspwm title
-top-center = 
+top-left = launcher title
+top-center = bspwm
 top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget system-bluetooth-bluetoothctl pulseaudio-control backlight network-short battery date
 
 # Bottom modules
@@ -67,7 +67,7 @@ interface = wlan0
 
 # when the current battery capacity excess this value,
 # the full-capacity format will be displayed.
-battery-full-at = 95
+battery-full-at = 94
 
 # battery and adapter
 battery-bat = BAT1
