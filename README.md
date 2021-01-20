@@ -36,12 +36,11 @@
 
 ### Hardware environment
 
-* CPU: i5-1135G7
-* GPU: intel Iris Xe (using i915driver)
-* GPU: Nvidia MX450
-* Resolution: 2880x1800
+后续的配置安装并非硬件独立的,比如DPI设置就与屏幕分辨率息息相关,而optimus laptop的多GPU使用也是早些年安装linux的一大梦魇.我的硬件关键词如下:
 
+`Intel Iris Xe` `Multi-GPU:intel+nvidia` `HiDPI Screen`
 
+<br>
 
 ## Arch installing(pre-in-post )
 
@@ -480,9 +479,31 @@ For wallblur:
 
 <br><br>
 
-
-
 ### [Launcher] rofi
+
+`@tl;dr: launcher plays a key row in tilling window manager`
+
+平铺式桌面带来的键盘为主的操作习惯,让我们减少了对鼠标的依赖.然而浮动窗口下的鼠标操作并非低效的,其在以及快速找到软件或文件的启动位置有键盘难以比拟的优势.在寻找众多窗口中的一个时,鼠标往往只需要几次点击(Win10: <kbd>win</kbd>+<mouseclick>),而平铺桌面下的键盘则往往需要启动终端输入命令.这时launcher的优势便体现出来了.
+
+Rofi是我目前见过的最棒的launcher,它脱胎于dmenu但相比dmenu有更高的拓展性,而且在集成众多功能时仍能保持快速启动.
+
+面对痛点,其提供了一般launcher能提供的dmenu(app launcher)与run(command launcher)等核心功能.此外还有window mode(切换到目标窗口),ssh mode乃至file-brower(更进一步的快速检索)等mode.更为夸张地是其提供了高度自主的样式管理(以CSS配置),这就带来了相当大的用户自主空间.
+
+**`How to use`**
+
+Rofi是一次性启动的(绝大多数launcher如此),也就是说,非daemon形式而是每次启动窗口都需要一次命令输入.或许显得繁琐但这是一种安全而纯净的形式.
+
+因此,最佳的实践方式是将rofi的启动配置为快捷键.
+
+rofi的配置文件存储在`~/.config/rofi/config.rasi`,其配置项贴心地可在`rofi -h`中查看,此外还可以使用`rofi -upgrade-config`来生成默认配置.
+
+**`Dependencies`**
+
+```
+rofi
+```
+
+
 
 <br><br>
 

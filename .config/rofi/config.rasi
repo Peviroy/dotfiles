@@ -1,3 +1,6 @@
+/*
+ *  vim:ft=css
+ */
 configuration {
   dpi: 144;
 
@@ -6,11 +9,24 @@ configuration {
 	display-window:  " node";
 	display-ssh:	   " ssh";
   display-file-browser: " brow";
-  display-combi:   "& ";
+  /* use combi mode to combine drun&window*/
+  display-combi:   ".. ";
 
-	sidebar-mode:    true;
 	show-icons:true;
   font: "FiraCode Regular 14";
+
+  /*== key binding for colemak*/
+  /* scroll */
+  kb-row-up: "Alt+u";
+  kb-row-down: "Alt+e";
+  /* input selection */
+  kb-clear-line: "Control+l";
+  kb-move-front: "Control+n";
+  kb-move-end: "Control+i";
+  kb-move-word-back: "Alt+b";
+  kb-move-word-forward: "Alt+w";
+  kb-move-char-back: "Alt+n";
+  kb-move-char-forward: "Alt+i";
 }
 
 * {
@@ -48,7 +64,7 @@ window {
 	location:	 west;
 	anchor:		 west;
 	height:		 70%;
-	width:		 20%;
+	width:		 18%;
 	orientation: horizontal;
 	children:	 [mainbox];
 }
