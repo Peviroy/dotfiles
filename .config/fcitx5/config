@@ -19,7 +19,7 @@ ActivateKeys=
 DeactivateKeys=
 
 [Hotkey/TriggerKeys]
-0=Control+space
+0=Control+Control_R
 
 [Hotkey/PrevPage]
 0=Up
@@ -40,7 +40,7 @@ DeactivateKeys=
 # Active By Default
 ActiveByDefault=False
 # Share Input State
-ShareInputState=Program
+ShareInputState=All
 # Show preedit in application
 PreeditEnabledByDefault=True
 # Show Input Method Information when switch input method
