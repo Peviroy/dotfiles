@@ -204,7 +204,7 @@ ramp-volume-foreground = ${colors.nord7}
 type = custom/script
 tail = true
 format-underline = ${colors.success}
-label-padding = 2
+label-padding = 0
 label-foreground = ${colors.foreground}
 
 exec = pulseaudio-control --icons-volume "%{F#8FA67B},%{F#8FA67B}" --icon-muted "" --sink-nicknames-from "device.description" --format '$VOL_ICON ${VOL_LEVEL}%' listen
@@ -364,6 +364,5 @@ content =  |
 content-font = 6
 content-foreground = #1793d1
 ;content-foreground=${colors.foreground}
-content-padding = 1
 click-left = rofi -modi file-browser,run,ssh,combi -combi-modi drun,window -show combi
 

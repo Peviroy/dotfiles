@@ -11,6 +11,8 @@ height = 3%
 offset-x = 0
 offset-y = 0
 radius = 0.0
+padding-left = 2
+padding-right = 2
 
 fixed-center = true
 override-redirect = false

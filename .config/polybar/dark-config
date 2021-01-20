@@ -13,6 +13,8 @@ height = ${config.height}
 offset-x = ${config.offset-x}
 offset-y = ${config.offset-y}
 radius = ${config.radius}
+padding-left = ${config.padding-left}
+padding-right = ${config.padding-right}
 
 fixed-center = ${config.fixed-center}
 dpi = ${config.dpi}
