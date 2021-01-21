@@ -18,6 +18,18 @@ fixed-center = true
 override-redirect = false
 wm-restack = bspwm
 
+font-0 = "Overpass:size=12"
+font-1 = FontAwesome5FreeSolid:pixelsize=12;1
+font-2 = FontAwesome5FreeRegular:pixelsize=12;1
+font-3 = FontAwesome5Brands:pixelsize=8;1
+font-4 = FiraCode-Regular:pixelsize=12
+# for nerd icon
+font-5 = "JetBrainsMono Nerd Font:size=16;5"
+# for Chinese font
+font-6 = "GlowSansSC Normal Book:size=12"
+# for weather icon
+font-7 = Weather Icons:style=Regular:size=12;1
+
 # module list:
 # alsa: Display current volume
 # backlight: Display screen brightness

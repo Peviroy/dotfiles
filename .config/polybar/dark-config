@@ -28,6 +28,15 @@ padding = 0
 override-redirect = ${config.override-redirect}
 wm-restack = ${config.wm-restack}
 
+font-0 = ${config.font-0}
+font-1 = ${config.font-1}
+font-2 = ${config.font-2}
+font-3 = ${config.font-3}
+font-4 = ${config.font-4}
+font-5 = ${config.font-5}
+font-6 = ${config.font-6}
+font-7 = ${config.font-7}
+
 tray-padding = 0
 tray-detached = false
 tray-maxsize = 32
@@ -41,14 +50,6 @@ enable-ipc = true
 inherit = bar/base
 
 module-margin = 1
-
-font-0 = "Overpass:size=12"
-font-1 = FontAwesome5FreeSolid:pixelsize=12;1
-font-2 = FontAwesome5FreeRegular:pixelsize=12;1
-font-3 = FontAwesome5Brands:pixelsize=8;1
-font-4 = FiraCode-Regular:pixelsize=12
-# for nerd icon
-font-5 = "JetBrainsMono Nerd Font:size=16;5"
 
 modules-left = ${config.top-left}
 modules-center = ${config.top-center}
@@ -64,12 +65,6 @@ inherit = bar/base
 bottom = true
 
 module-margin = 1
-
-font-0 = WenQuanYiMicroHei:size=12
-font-1 = FontAwesome5FreeSolid:pixelsize=12;1
-font-2 = FontAwesome5Brands:pixelsize=8;1
-font-3 = Weather Icons:style=Regular:size=12;1
-font-4 = FiraCode-Regular:pixelsize=12
 
 modules-left = ${config.bottom-left}
 modules-center = ${config.bottom-center}
