@@ -10,7 +10,7 @@ width = 100%
 height = 3%
 offset-x = 0
 offset-y = 0
-radius = 0.0
+radius = 11
 padding-left = 2
 padding-right = 2
 
@@ -55,8 +55,11 @@ bottom-center = daily-poem
 bottom-right = system-usb-udev
 
 systray-top = none
+systray-offset-x-top = 0
+systray-detached-top = true
 systray-bottom = right
-
+systray-offsex-x-bottom = -5
+systray-detached-bottom = true
 # global style
 line-size = 6
 

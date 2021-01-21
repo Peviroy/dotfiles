@@ -785,6 +785,8 @@ npm环境管理工具`nvm`,可以理解成python的venv. 其出发点在于解�
 
 <br>
 
+
+
 ### brightness control 
 
 `@nord-top  [module/backlight]`
@@ -910,4 +912,22 @@ widget是通过systemd来同clipmenu沟通的，因此需要手动创建一个sy
 虽然仅是个抓取内容的脚本,但这仍不失为一个很棒的脚本.因为这解决了用户自行借助**今日诗歌**Token来抓取的繁琐.
 
 脚本daily-poem足有8M大小,由于已经封装好所以没能看见内容.兴许是一个nodejs封装的cli?
+
+<br>
+
+<br>
+
+### [shape] round corner
+
+`@nord-config dark-config`
+
+圆角相比方角显得更为地活泼,polybar也提供了radius的选项来设置圆角半径.但仍存在冲突.这表现在当tray在bar的边界(left,right)上时,会因tray的背景色而覆盖住bar的圆角.具体可见于此处:[Radius not respected with systrays](https://github.com/polybar/polybar/issues/651)
+
+解决方案是:
+
+```
+tray-detached = true   ; 让tray可分
+tray-offset-x = -20    ; 让tray相较边界有一个位移
+; Other padding settings also work
+```
 
