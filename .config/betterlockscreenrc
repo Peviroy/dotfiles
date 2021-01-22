@@ -1,0 +1,30 @@
+#==configuration file for betterlockscreen
+
+#==most setting take effect once saved. while some needs regenerate lock image via -u
+#==non-documented setting may need to regenerate image
+#==it seems obey the format of rgba
+
+
+# color inside ring
+insidecolor=4c566a
+# color of ring
+ringcolor=4c566a
+keyhlcolor=5e81ac
+bshlcolor=d23c3dff
+
+# at the margin of key ring
+separatorcolor=2e3440
+
+# this color of verified or wrong
+insidevercolor=81a1c1
+insidewrongcolor=bf616a
+ringvercolor=434c5e
+ringwrongcolor=bf616a
+
+verifcolor=eceff4
+timecolor=eceff4
+datecolor=eceff4
+
+# regenerating needed
+# i'd like it to be transparent
+loginbox=2e344000
