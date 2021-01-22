@@ -6,7 +6,7 @@ KEYBOARD_ID="NIZ BT5.0 Keyboard"
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
 METRIC=wpm
-FORMAT=" %d $METRIC"
+FORMAT="%d $METRIC"
 
 INTERVAL=20
 
@@ -14,12 +14,13 @@ INTERVAL=20
 # yourself. $3 is the key index. Use `xinput test "AT Translated Set 2 keyboard"`
 # to see key codes in real time.  Be sure to open a pull request for your
 # layout's condition!
-LAYOUT=dontcare
+LAYOUT=colemak
 
 case "$LAYOUT" in
 	qwerty) CONDITION='($3 >= 10 && $3 <= 19) || ($3 >= 24 && $3 <= 33) || ($3 >= 37 && $3 <= 53) || ($3 >= 52 && $3 <= 58)'; ;;
 	azerty) CONDITION='($3 >= 10 && $3 <= 19) || ($3 >= 24 && $3 <= 33) || ($3 >= 37 && $3 <= 54) || ($3 >= 52 && $3 <= 57)'; ;;
 	qwertz) CONDITION='($3 >= 10 && $3 <= 20) || ($3 >= 24 && $3 <= 34) || ($3 == 36) || ($3 >= 38 && $3 <= 48) || ($3 >= 52 && $3 <= 58)'; ;;
+  colemak) CONDITION='($3 >= 10 && $3 <= 21) || ($3 >= 23 && $3 <= 36) || ($3 >= 38 && $3 <= 48) || ($3 >= 52 && $3 <= 61) || ($3 == 65) || ($3 == 49)'; ;; 
         dontcare) CONDITION='1'; ;; # Just register all key presses, not only letters and numbers
 	*) echo "Unsupported layout \"$LAYOUT\""; exit 1; ;;
 esac

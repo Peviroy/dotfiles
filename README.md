@@ -957,6 +957,8 @@ widget是通过systemd来同clipmenu沟通的，因此需要手动创建一个sy
 
 ### daily-poem
 
+`@nord-down [module/daily-poem]`
+
 `@tl;dr: display chinese poems`
 
 我的polybar最初是借鉴于[Yucklys/polybar-nord-theme](https://github.com/Yucklys/polybar-nord-theme#daily-poem)的,而之所以为之吸引,很大部分原因要归结于daily-poem这个module.
@@ -964,6 +966,44 @@ widget是通过systemd来同clipmenu沟通的，因此需要手动创建一个sy
 虽然仅是个抓取内容的脚本,但这仍不失为一个很棒的脚本.因为这解决了用户自行借助**今日诗歌**Token来抓取的繁琐.
 
 脚本daily-poem足有8M大小,由于已经封装好所以没能看见内容.兴许是一个nodejs封装的cli?
+
+<br>
+
+<br>
+
+### [keyboard] [info-hackspeed](https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed)
+
+`@nord-down [module/info-hackspeed]`
+
+`@tl;dr: track your typing speed`
+
+从名字就可以看出,此脚本是相当功能强大的.这能追踪敲字速度,且以非常轻量的方式并不会占据过多的cpu资源.这不禁让我想起来一些编辑器上的powerline(?)插件.虽然没有敲击特效,但对速度的记录对于我这种刚刚开启新键位旅程的人,还是相当有使用价值的.
+
+不过需要注意的是,这并非开箱即用的,需要根据其github上提供的教程进行一定配置.当然这是我不必多言的.
+
+需要注意的是, 默认的输出方案没法很好地在output上使用多种字体. 比如我希望在icon上使用nerd font,在data上使用overpass.
+
+这时一个比较折衷的方案是将icon独立出来在polybar的config中作为prefix:
+
+```
+# Original
+info-hackspeed.sh
+
+	FORMAT="<icon> %d $METRIC"
+
+---
+# Tweaked
+info-hackspeed.sh
+
+	FORMAT="%d $METRIC"
+...
+nord_down
+
+    [module/]
+    format-prefix = " %{T6}<icon> %{T-}"
+```
+
+
 
 <br>
 
