@@ -396,7 +396,7 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
 
 若是不希望一打开便是以display manager的图案为壁纸，或是因自动login或无display manager而呈现灰色壁纸，那么先配置壁纸无疑是明智的。
 
-feh之外nitrogen也是有名的壁纸管理器，但feh好在集成了随即选择壁纸的功能，这让我们能在注册快捷键后一键切换壁纸。同时这也能胜任精简图片浏览器，且sidebar而能够沉浸式展示图片。
+feh之外nitrogen也是有名的壁纸管理器，但feh好在集成了随即选择壁纸的功能，这让我们能在注册快捷键后一键切换壁纸。同时这也能胜任精简图片浏览器，且能够沉浸式展示图片。
 
 **`Wallpaper starts at login`**
 
@@ -465,7 +465,43 @@ For wallblur:
   imagemagick wmctrl feh python-wallblur(python)
   ```
 
+<br>
 
+<br>
+
+### [Compositor] picom
+
+`@tl;dr: providing compositing to window manager`
+
+compositor是一切特效的来源.仍记得在使用plasma时偶尔会因compositor的崩溃而失去所以特效,这时当然在sysytem setting里重新勾选混成器选项即可恢复,但仍给我留下了深刻的印象.
+
+一般来说,单独的window manager都是不带compositor的,因此不必失落于初次登陆时生硬的界面.对此,我们需要手动选择一个混成器.这里选择的是compton的继任者picom.当然也可以多多尝试其他.
+
+**`How to start`**
+
+在login script里添加运行命令即可,在bspwm下,我选择在bspwmrc中添加:
+
+```sh
+~/.config/bspwm/bspwmrc
+picom -f & # f for fade
+```
+
+**`What to configure`**
+
+配置文件见`~/.config/picom/picom.conf`, `/etc/xdg/picom.conf`
+
+特效主要涉及四个方面:
+
+* shadow of window
+* fades window in/out
+* opacity of unfocused window
+* blur of windows' background
+
+但关键的特效表现在前两者,也即使需要着重配置. [opacity]之所以不使用是因为淡化非聚焦窗口在我看来并不自然. 何况bspwm自带对聚焦窗口的边框强调功能. 而[blur]则相当吃cpu,相比于对窗口进行模糊,对壁纸进行模糊是更划算的方案.
+
+**`Troubleshooting`**
+
+picom可能会在firefox上有奇怪的表现,相关解决方案参阅arch wiki.
 
 <br>
 
