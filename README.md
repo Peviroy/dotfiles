@@ -456,14 +456,30 @@ feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
 For feh-blur-wallpaper
 
 * ```
-  graphicsmagick wmctrl feh
+  picom graphicsmagick wmctrl feh
   ```
 
 For wallblur:
 
 * ```
-  imagemagick wmctrl feh python-wallblur(python)
+  picom imagemagick wmctrl feh python-wallblur(python)
   ```
+
+<br>
+
+<br>
+
+### [Screenlock] betterlockscreen
+
+`@tl;dr: fast and sweet looking lock script based on i3-lock-color` 
+
+精美的锁屏程序往往并不流畅,betterlockscreen.sh简短但让pretty screen lock重新快捷.
+
+**`Dependencies`**
+
+```
+imagemagick feh xorg-xrandr xorg-xdpyinfo betterlockscreen(aur) i3-lock-color(aur)
+```
 
 <br>
 

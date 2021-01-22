@@ -28,6 +28,9 @@ sh $HOME/.config/polybar/launch.sh
 # Message notifier
 /usr/bin/dunst &
 
+# Cache lock images for betterlockscrren
+/usr/bin/betterlockscreen -u ~/Pictures/ScreenLock/ &
+
 # Input method fcitx5 (optional | IM DEMAND)
 nohup fcitx5 >/dev/null 2>&1 &
 

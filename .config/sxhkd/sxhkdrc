@@ -19,6 +19,10 @@ super + Escape
 super + p
 	wal  -ste -lq -i $HOME/Pictures/Home_Slide
 
+# lock the screen
+super + alt + l
+  /usr/bin/betterlockscreen -l dim
+
 # reload polybar
 super + alt + p
   $HOME/.config/polybar/launch.sh
