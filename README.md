@@ -378,7 +378,80 @@ hybrid下提供激活了nvidia,但默认情况并不调用,调用的方式是:
   __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" __GL_SHOW_GRAPHICS_OSD=1
   ```
 
-  <br><br>
+<br><br>
+
+### [DM] [sddm](https://github.com/sddm/sddm)
+
+从内容上来讲,本当将sddm这一display manager(login manager)作为[Bspwm](#Bspwm)的内容,因为这可以理解为桌面行为的一部分.但从流程上来说,这可以属桌面的先遣.
+
+因为我终究不是非常喜欢通过startx直接进入desktop session的方案.并非不认同,主要是出于以下几点的考虑:
+
+* DM的存在让管理多个desktop session更为方便容易且养眼许多.
+* DM所管理的login界面不应当被认为是无关紧要的.功能性方面已经在上一点表明.而在美观性上,至少在linux下login界面的高度可定制性足以让login界面有不亚于桌面的美感.
+* DM作为进入desktop session前的缓冲地带,能给session下需要时间启动的程序以一定的时间.这样不至于火急火燎地冲进一个施工现场.这点在polybar scripts如daily-poem,weather,hackspeed上表现无疑.
+
+而我所使用的是sddm.
+
+**`Set sddm`**
+
+默认的配置保存在/usr/lib/sddm/sddm.conf.d/default.conf之中,因为其是内容自解释的,不做过多解释.而任何的配置更改则被建议保存在/etc/sddm.conf.d/之中.
+
+关于sddm的绝大部分配置是关于session login的,这同如何正确进入desktop有极大关系,不过这些内容往往保持默认即可.我主要在三个方面进行设置: Autologin, Theme, X11
+
+```
+/etc/sddm.conf.d/myconfig.conf
+---
+ [Autologin]   # 此处我没进行配置,因并不喜欢自动跳过DM
+ Relogin=false
+ Session=
+ User=
+
+[Theme]     
+Current=sugar-candy # sddm theme
+CursorTheme=Breeze_Snow  # cursor theme
+
+[X11]
+ServerArguments=-nolisten tcp -dpi 144  #HiDPI
+```
+
+对于cursor theme, 对象是选择/usr/share/icons/下带有cursor内容的icon theme.而X11下的ServerArgument中设置dpi的选项是为了应对高分屏下的缩放问题.于此类似的还有EnableHiDPI选项,这是针对X11下app的设置,但由于可能会导致降低分辨率.因此选择并不启用它而自行设置DPI,可见于[High DPI](#[Display]High DPI),[apply gtk and qt themes to APPs](#[Theme] apply gtk and qt themes to APPs).
+
+至于Current则是设置sddm的theme了.
+
+**`Set sddm theme`**
+
+sddm下theme是不少的,我选择的是[sugar-candy](https://framagit.org/MarianArlt/sddm-sugar-candy).相较于其他的theme,其最出彩的点便在于高度可配置性.这使得我们能配置出完全私人订制的theme.
+
+配置的方案在/usr/share/sddm/themes/sugar-candy/theme.conf,因详细的配置项同样是充分注释的,此处从略.
+
+**`Test your sddm theme`**
+
+要想测试theme效果,就需要启动进入sddm,这在实际情况下要求注销session,而这显然是繁琐的.但sddm都帮我们想好了.通过使用`sddm-greeter --test-mode --theme`能够快速显现出login时的场景.总之是相当好用了.
+
+**`Dependencies`**
+
+* sddm only
+
+  ```sh
+  $ sudo pamcan -S sddm
+  ```
+
+* breeze_snow cursor
+
+  ```sh
+  $ sudo pacman -S breeze-icons
+  ```
+
+* sddm theme -- sugar_candy
+
+  ```sh
+  $ sudo pacman -S --needed qt5-graphicaleffects qt5-quickcontrols2 qt5-svg
+  $ yay -S sddm-theme-sugar-candy-git
+  ```
+
+<br>
+
+<br>
 
 ---
 
