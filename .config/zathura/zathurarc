@@ -1,0 +1,175 @@
+# vim:ft=vim
+#
+# ======================================
+# === Nord theme
+# ======================================
+set font                        "JetBrainsMono Nerd Font 10"
+
+set default-bg                  "#2E3440"
+set default-fg                  "#3B4252"
+
+set statusbar-fg                "#D8DEE9"
+set statusbar-bg                "#434C5E"
+
+set index-bg                   "#2E3440" 
+set index-fg                   "#ECEFF4" 
+set index-active-bg             "#5e81ac" 
+set index-active-fg             "#ECEFF4" 
+
+set inputbar-bg                 "#2E3440"
+set inputbar-fg                 "#8FBCBB"
+
+set notification-bg             "#2E3440"
+set notification-fg             "#8FBCBB"
+
+set notification-error-bg       "#2E3440"
+set notification-error-fg       "#BF616A"
+
+set notification-warning-bg     "#2E3440"
+set notification-warning-fg     "#BF616A"
+
+set highlight-color             "#EBCB8B"
+set highlight-active-color      "#81A1C1"
+
+set completion-bg               "#3B4252"
+set completion-fg               "#81A1C1"
+
+set completion-highlight-fg     "#8FBCBB"
+set completion-highlight-bg     "#81A1C1"
+
+set recolor-lightcolor          "#2E3440"
+set recolor-darkcolor           "#ECEFF4"
+
+set recolor                     "true"
+set recolor-keephue             "true"
+
+
+
+# ======================================
+# === Basic settings
+# ======================================
+set selection-clipboard clipboard
+map H feedkeys ":exec sh -c \"cat ~/.local/share/zathura/history | grep -Po '\[\K[^\]]*' | dmenu | xargs zathura\""
+
+
+# ======================================
+# === Normal mode
+# ======================================
+#
+# ===
+# === Cursor Movement
+# ===
+#
+# New cursor movement (the default arrow keys are used for resizing windows)
+#     ^
+#     u
+# < n   i >
+#     e
+#     v
+map U scroll up
+map E scroll down
+map n scroll left
+map i scroll right
+# use u and e for fast move, while U and E for slow
+map u scroll half-up
+map e scroll half-down
+map <C-u> navigate previous
+unmap <C-e> 
+map <C-e> navigate next
+
+# snaps to the current page
+map zz snap_to_page
+#H L : goto top or bottom of the current page
+
+# disable other
+unmap space
+unmap J
+unmap K
+
+
+# === Search 
+map = search forward
+map - search backward
+
+
+# === Change rotate to a secluded key
+unmap r
+map <A-r> rotate
+
+
+# === Quit
+unmap quit
+map Q quit
+
+
+# === Bookmark
+#mX : set a quickmark X
+#'X : go to the quickmark X
+
+
+# === Viewer change
+# F5 for presentation mode
+# F5 for F11 for fullscreen  mode
+# Tab for index mode
+# <C-m> to toggle inputbar
+# <C-n> to toggle statusbar
+
+
+# ======================================
+# === Fullscreen mode
+# ======================================
+# Cursor movement
+unmap [fullscreen] J 
+unmap [fullscreen] K
+unmap [fullscreen] space
+unmap [fullscreen] q
+
+map [fullscreen] U scroll up
+map [fullscreen] E scroll down
+map [fullscreen] u scroll half-up
+map [fullscreen] e scroll half-down
+map [fullscreen] <C-u> navigate previous
+unmap [fullscreen] <C-e> 
+map [fullscreen] <C-e> navigate next
+
+# Quit
+map [fullscreen] Q quit
+
+
+
+# ======================================
+# === Presentation mode
+# ======================================
+# Cursor movement
+unmap [presentation] J 
+unmap [presentation] K
+unmap [presentation] space
+unmap [presentation] q
+
+map [presentation] U scroll up
+map [presentation] E scroll down
+map [presentation] u scroll half-up
+map [presentation] e scroll half-down
+map [presentation] <C-u> navigate previous
+unmap [presentation] <C-e> 
+map [presentation] <C-e> navigate next
+
+# Quit
+map [presentation] Q quit
+
+
+
+# ======================================
+# === Index mode
+# ======================================
+# === Cursor Movement
+map [index] u navigate_index up
+map [index] e navigate_index down
+map [index] n navigate_index collapse
+map [index] i navigate_index expand
+map [index] N navigate_index collapse-all
+map [index] I navigate_index expand-all
+
+# === Quit
+unmap [index] q
+map [index] Q quit
