@@ -902,6 +902,12 @@ npm环境管理工具`nvm`,可以理解成python的venv. 其出发点在于解�
 
 <br><br>
 
+### [Screenshot] flameshot
+
+`@tl;dr: powerful yet simple to use screenshot software`
+
+<br><br>
+
 ---
 
 <br><br>
