@@ -1,8 +1,48 @@
 # <p align="center">MY DOTFILES </p> 
 
+Table of Contents
+=================
+
+* [Preface](#preface)
+
+   * [Configure Arch &amp; Bspwm &amp; Polybar](#configure-arch--bspwm--polybar)
+      * [Hardware environment](#hardware-environment)
+     * [Arch installing(pre-in-post )](#arch-installingpre-in-post-)
+       * [[Time] confict](#time-confict)
+       * [[Suspend]Hibernate](#suspendhibernate)
+       * [[Driver]Audio](#driveraudio)
+       * [[Driver]Bluetooth](#driverbluetooth)
+       * [[Shell]Share rc](#shellshare-rc)
+       * [[Display]High DPI](#displayhigh-dpi)
+       * [[Nvidia]optimus-manager](#nvidiaoptimus-manager)
+       * [[DM] <a href="https://github.com/sddm/sddm">sddm</a>](#dm-sddm)
+     * [Bspwm](#bspwm)
+       * [[Wallpaper, blur] feh &amp; pywal](#wallpaper-blur-feh--pywal)
+       * [[Screenlock] betterlockscreen](#screenlock-betterlockscreen)
+       * [[Compositor] picom](#compositor-picom)
+       * [[Core] vim](#core-vim)
+       * [[Launcher] rofi](#launcher-rofi)
+       * [[Copaste] xsel](#copaste-xsel)
+         * [how to use](#how-to-use)
+       * [[IM] fcitx5-im](#im-fcitx5-im)
+         * [dependency](#dependency)
+       * [[Theme] set cursor themes](#theme-set-cursor-themes)
+       * [[Theme] apply gtk and qt themes to APPs](#theme-apply-gtk-and-qt-themes-to-apps)
+       * [[App] dolphin](#app-dolphin)
+       * [[About sudo] and npm](#about-sudo-and-npm)
+       * [[Screenshot] flameshot](#screenshot-flameshot)
+       * [[Large character] figlet](#large-character-figlet)
+       * [[Tencent] Wechat and qq](#tencent-wechat-and-qq)
+     * [Polybar](#polybar)
+       * [brightness control](#brightness-control)
+       * [clipmenu](#clipmenu)
+       * [daily-poem](#daily-poem)
+       * [[keyboard] <a href="https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed">info-hackspeed</a>](#keyboard-info-hackspeed)
+       * [[shape] round corner](#shape-round-corner)
+
 ## Preface
 
-所谓兴致匆匆也不过如是了.
+所谓兴致匆匆也不过如是了
 
 到目前为止已经沉浸在此10天.
 
@@ -50,7 +90,7 @@ setfont ter-132n
 
 <br>
 
-### [Time] confict
+### [Time] conflict
 
 Win10是用local time, 而Arch使用universal time.若是不加以处理，其中一个OS的正确时间将导致另一个的失准。判断所使用的linux distro.
 
@@ -104,7 +144,7 @@ $reboot
 
 **`3. Solve compatiblity problems`**
 
-兼容性问题各异，此处仅展示我所遇到的。全面的troubleshoting见arch wiki.
+兼容性问题各异，此处仅展示我所遇到的。全面的troubleshooting见arch wiki.
 
 我的问题是黑屏问题，而这点我在wiki下找到描述:
 
@@ -150,7 +190,7 @@ sudo mkinitcpio -P
 
 ### [Driver]Audio
 
-arch-base并没有提供声卡驱动，因此若需要手动安装。在此过程中将遇见两个重要的名词：[Advanced Linux Sound Architecture](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) (**ALSA**) 与[PulseAudio](https://en.wikipedia.org/wiki/PulseAudio)。前者作为Drive不过也provide library作为userpace component(有时显得和PulseAudio抢工作)，后者作为Sound server是驱动与应用之间的媒介。
+arch-base并没有提供声卡驱动，因此若需要手动安装。在此过程中将遇见两个重要的名词：[Advanced Linux Sound Architecture](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) (**ALSA**) 与[PulseAudio](https://en.wikipedia.org/wiki/PulseAudio)。前者作为Drive不过也provide library作为userspace component(有时显得和PulseAudio抢工作)，后者作为Sound server是驱动与应用之间的媒介。
 
 **`ALSA`**
 
@@ -215,7 +255,7 @@ $sudo pacman -S bluz
 
    当然也可以不trust, 但有可能无法connect上
 
-4. Set-alias if jou like
+4. Set-alias if you like
 
    ```
    [device name]# set-alias blahblah
@@ -920,6 +960,48 @@ figlet的字体路径由`figlet -I2`指出,但默认提供的字体不是很富�
 
 * [jave.de/figlet](http://www.jave.de/figlet/fonts/overview.html)   
 * [figlet.org](http://www.figlet.org/examples.html)
+
+<br>
+
+<br>
+
+### [Tencent] Wechat and qq
+
+`@tl;dr: awful experience`
+
+腾讯家的产品对linux端都不太友好,或者说可能压根就不曾考虑过.
+
+但即便如此,用还是得用的.曾用过各种解决方案,唯一好用的貌似是一个electron based wechat, 但这相当慢且因本质是web端却经常刷不上二维码而无从登陆.后来屈从与wine的解决方案, 一度是用上了deepin-wine-tim.
+
+如今,在转向高分屏之后,选择的解决方案是wechat-uos与linuxqq.但注定是偶尔使用罢了,断然不会常驻,并非意气用事,是权衡的结果.
+
+**`Wine套件的复杂环境如同输液一般令人无可奈何`**
+
+之所以不再使用wine solution一个重要原因在于过于繁杂的依赖.
+
+要想使用wine-wechat/qq, 首先就被要求打开pacman.conf下multilib的选项.因为,这是一个32x应用.然后在安装过程中,就将看到数不清的lib32依赖涌现在眼前,数量众多却用途单一.作为一个arch用户,我不希望一些大概永远也不会用到的package充斥我的仓库,但为了用上wine-wechat/qq,我无从选择.
+
+**`Wine solution同Tilling Window Manager配合不佳`**
+
+或许会在deepin之中,wine套件运行良好体验一流,但在arch下并不.而且我所使用的是bspwm这一平铺式桌面, 在使用wine-wechat/qq时经常能碰到badwindow的情况.
+
+而且,在使用polybar的情况下,wine-wechat/qq内置的systray icon因不适高分屏而相当模糊.同时会隐藏而找不到icon.
+
+**`Linuxqq之简陋`**
+
+或许这款腾讯开发的qq唯一的优势就是不需要wine了吧. 10年前的美术风格与缺少消息通知,且无法后台常驻.但相对干净而且能用就行.
+
+**`Wechat之pad、laptop必择其一`**
+
+实话说,wechat-uos(迫真改版)是令我相当惊艳了.这是实实在在的原生且流畅.其上游是一个名为统信的国产多平台操作系统,目前正在发展阶段.我不曾了解其细节,但就其同腾讯合作开发linux端wechat来看,可以说是相当值得期待了.
+
+话说回来,此版本基本没有缺陷,甚至能够调用系统通知功能来传递消息.总之是十分值得体验的了.我所能感知的唯一还缺少的功能可能是无法最小化至后台了.
+
+但没想到最大的瓶颈不在自身而在微信.多年过去了,微信无法在电脑与平板同时登陆的问题仍没有解决.只能说很令人失望,与其在"拍一拍"和"特效表情"这些花边上花力气不如实实在在改进下用户体验.
+
+<br>
+
+<br>
 
 ---
 
