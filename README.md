@@ -906,7 +906,20 @@ npm环境管理工具`nvm`,可以理解成python的venv. 其出发点在于解�
 
 `@tl;dr: powerful yet simple to use screenshot software`
 
-<br><br>
+<br>
+
+<br>
+
+### [Large character] figlet
+
+ `@tl;dr: powerful and variant character generater`
+
+figlet的字体路径由`figlet -I2`指出,但默认提供的字体不是很富有立体感,由此我顺便上传了我所比较喜欢的几款字体.以下是我所使用的两个资源库.
+
+**`resources`**
+
+* [jave.de/figlet](http://www.jave.de/figlet/fonts/overview.html)   
+* [figlet.org](http://www.figlet.org/examples.html)
 
 ---
 
