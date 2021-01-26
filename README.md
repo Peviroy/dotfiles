@@ -4,8 +4,7 @@ Table of Contents
 =================
 
 * [Preface](#preface)
-
-   * [Configure Arch &amp; Bspwm &amp; Polybar](#configure-arch--bspwm--polybar)
+* [Configure Arch &amp; Bspwm &amp; Polybar](#configure-arch--bspwm--polybar)
       * [Hardware environment](#hardware-environment)
      * [Arch installing(pre-in-post )](#arch-installingpre-in-post-)
        * [[Time] confict](#time-confict)
@@ -23,9 +22,7 @@ Table of Contents
        * [[Core] vim](#core-vim)
        * [[Launcher] rofi](#launcher-rofi)
        * [[Copaste] xsel](#copaste-xsel)
-         * [how to use](#how-to-use)
        * [[IM] fcitx5-im](#im-fcitx5-im)
-         * [dependency](#dependency)
        * [[Theme] set cursor themes](#theme-set-cursor-themes)
        * [[Theme] apply gtk and qt themes to APPs](#theme-apply-gtk-and-qt-themes-to-apps)
        * [[App] dolphin](#app-dolphin)
@@ -33,6 +30,7 @@ Table of Contents
        * [[Screenshot] flameshot](#screenshot-flameshot)
        * [[Large character] figlet](#large-character-figlet)
        * [[Tencent] Wechat and qq](#tencent-wechat-and-qq)
+       * [[Rule] Bspwmrc/bspc](#rule-bspwmrc/bspc)
      * [Polybar](#polybar)
        * [brightness control](#brightness-control)
        * [clipmenu](#clipmenu)
@@ -664,8 +662,8 @@ rofi的配置文件存储在`~/.config/rofi/config.rasi`,其配置项贴心地�
 
 **`Dependencies`**
 
-```
-rofi
+```sh
+sudo pacman -S rofi
 ```
 
 
@@ -979,7 +977,7 @@ figlet的字体路径由`figlet -I2`指出,但默认提供的字体不是很富�
 
 之所以不再使用wine solution一个重要原因在于过于繁杂的依赖.
 
-要想使用wine-wechat/qq, 首先就被要求打开pacman.conf下multilib的选项.因为,这是一个32x应用.然后在安装过程中,就将看到数不清的lib32依赖涌现在眼前,数量众多却用途单一.作为一个arch用户,我不希望一些大概永远也不会用到的package充斥我的仓库,但为了用上wine-wechat/qq,我无从选择.
+要想使用wine-wechat/qq, 首先就被要求打开pacman.conf下multilib的选项.因为,这是一个32x应用.然后在安装过程中,就将看到数不清的lib32依赖涌现在眼前,数量众多(预计有140+)却用途单一.作为一个arch用户,我不希望一些大概永远也不会用到的package充斥我的仓库,但为了用上wine-wechat/qq,我无从选择.
 
 **`Wine solution同Tilling Window Manager配合不佳`**
 
@@ -998,6 +996,114 @@ figlet的字体路径由`figlet -I2`指出,但默认提供的字体不是很富�
 话说回来,此版本基本没有缺陷,甚至能够调用系统通知功能来传递消息.总之是十分值得体验的了.我所能感知的唯一还缺少的功能可能是无法最小化至后台了.
 
 但没想到最大的瓶颈不在自身而在微信.多年过去了,微信无法在电脑与平板同时登陆的问题仍没有解决.只能说很令人失望,与其在"拍一拍"和"特效表情"这些花边上花力气不如实实在在改进下用户体验.
+
+<br>
+
+<br>
+
+### [Rule] Bspwmrc/bspc
+
+`@tl;dr: the core of window management`
+
+bspwmrc本质上是一个shell脚本,而且由于是用于加载bspwm配置的脚本,因此往往可以用来放置自启动脚本.不过,除此之外,还应当注意到其默认配置文件(/usr/share/doc/bspwm/examles/bspwmrc)放置了bspc的一系列指令.
+
+bspc是bspwm用于控制窗口的媒介.而在此bspwmrc中,bspc主要对bspwm的窗口行为进行一定的配置.所以我们能看到`bspc config`在设置窗口颜色,控制窗口间隔等内容.
+
+更多的内容可见于`man bspc`之中,此处要着重强调的是``rule`.
+
+**`bspc rule`**
+
+此指令做到了为每一个特定的应用分配一系列参数,如启动的桌面,窗口的状态,窗口的位置等.其一个简单而典型的应用场景就是**为启动的应用指定其要启动的桌面**.
+
+或许尚未明白其意义,不要紧.简单来说,在虚拟桌面如此普及的时代,基本所有的桌面系统都提供了多(虚拟)桌面的功能.面对多个桌面,我们本能地会为这些桌面设置功能分区.比如1号桌面用于浏览上网,2号桌面用于听音乐.
+
+但这些功能分区其实是我们主观认定的,大部分桌面可能仅支持简单的桌面命名功能罢了,而桌面分区规则的遵守则基本依靠自己来勉为其难.
+
+而这时,bspwm为我们提供了将软件启动到指定桌面的功能,**于是乎在启动桌面时我们便不必再先切换桌面再启动软件了,只需要启动软件,其便自动切换到预先制定好的位置.**
+
+这一小小的功能带来的影响是巨大的,桌面规则的遵守从此简单得一如反掌.而此功能的实现也是如此简单:
+
+```sh
+~/.config/bspwm/bspwmrc
+---
+bspc rule -a Typora desktop='^4' follow=on focus=on
+# 设置Typora启动于桌面4,启动后视角跟随着Typora切换到桌面4并聚焦
+```
+
+唯一困难的点或许在于Typora这一窗口对象名字的获取.
+
+#### Get info for `bspc rule`
+
+根据manual page, `窗口对象名字`的严格解释为:
+
+```sh
+(<class_name>|*)[:(<instance_name>|*)[:(<name>|*)]]
+```
+
+其中class_name是必须的,而instance_name与name是可选的.
+
+`Only class_name needed`
+
+对于普遍意义上的软件而言,比如Typora等,获取class_name即可.
+
+这可以通过两种方案:
+
+* wmctrl -lx | awk '{print $4;}'
+
+  此时将获得如`typora.Typora`的词条,后者Typora便是所需的class_name.
+
+* xprop WM_CLASS
+
+  选择随即一个窗口后将获得如`WM_CLASS(STRING) = "typora", "Typora"`的词条,后者Typora便是所需的class_name.
+
+`All required`
+
+我们或许不满足于GUI软件,而希望也能够为一些CLI软件制定规则.但要注意的是,CLI软件是启动在终端模拟器之中的,我们去获取其class_name无疑只能得到终端模拟器的名字.因此使用上面的方法是徒劳的,但若实在想要做到那便不得不稍加麻烦一些了.
+
+首要的工作是为CLI软件赋予GUI软件的启动地位.
+
+1. .desktop
+
+   如果去研究/usr/share/application下一系列application的语法,将能注意到有**Terminal**一项,这意味着能够为CLI创造一个.desktop图标从而能够使用launcher以启动GUI软件的形式去启动CLI.一个简单的template如下所示
+
+   ```
+   [Desktop Entry]
+   Name=BTM
+   GenericName=btm
+   
+   TryExec=btm
+   Exec=sh -c "btm"
+   Terminal=true
+   
+   Icon=/usr/share/icons/PapirusDark/64x64/apps/kubrick.svg
+   
+   Keywords=System;
+   Type=Application
+   Categories=Utility;System;
+   StartupNotify=false
+   ```
+
+2. 在创建完毕之后,应当能通过launcher如rofi等来启动此CLI了.如果没有问题,将会在默认的终端模拟器中启动制定程序.
+
+3. wmctrl -lx
+
+   ```
+   0x04600006  2 st-256color.st-256color  Arctic nvim
+   ```
+
+   其中, `st-256color.st-256color`对应的是<instance_name>.<class_name>,`nvim`对应的正是<name>.
+
+4. xprop
+
+   在选择目标窗口后将获得一长串的内容,其中`WM_NAME(UTF8_STRING)`指向的正是<name>而`WM_CLASS(STRING)`指向的正是<instance_name> <class_name>
+
+
+
+`Dependencies`
+
+```sh
+sudo pacman -S wmctrl
+```
 
 <br>
 

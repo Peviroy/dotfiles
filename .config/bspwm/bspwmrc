@@ -1,4 +1,14 @@
 #! /bin/sh
+#==================================================================================
+#  _______    ________  _______   __   __  ___  ___      ___   _______    ______   
+# |   _  "\  /"       )|   __ "\ |"  |/  \|  "||"  \    /"  | /"      \  /" _  "\  
+# (. |_)  :)(:   \___/ (. |__) :)|'  /    \:  | \   \  //   ||:        |(: ( \___) 
+# |:     \/  \___  \   |:  ____/ |: /'        | /\\  \/.    ||_____/   ) \/ \      
+# (|  _  \\   __/  \\  (|  /      \//  /\'    ||: \.        | //      /  //  \ _   
+# |: |_)  :) /" \   :)/|__/ \     /   /  \\   ||.  \    /:  ||:  __   \ (:   _) \  
+# (_______/ (_______/(_______)   |___/    \___||___|\__/|___||__|  \___) \_______) 
+#                                                                                  
+#==================================================================================
 
 #==============================
 #===== Auto start
@@ -9,7 +19,7 @@ xrandr --dpi 144
 # GDK app scale
 export GDK_DPI_SCALE=1.5
 
-# QT app theme and scale VARIANT (optional | QT APP DEMAND)
+# QT app theme and scale VARIANT (works well on dolphin and clementine)(optional | QT APP DEMAND)
 export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
 
 # Start compositer
@@ -41,7 +51,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 
 #========================================
-#===== Bspwm rules
+#===== Bspwm config
 #========================================
 # Virtual desktop setting; Also multi monitor supplied
 bspc monitor -d I II III IV V VI
@@ -64,8 +74,38 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
+
+
+
+#========================================
+#===== Bspwm rule
+#========================================
+
+# Workspace 1 (Home)
+bspc rule -a TelegramDesktop desktop='^1'
+bspc rule -a 微信    desktop='^1'             follow=on focus=on
+bspc rule -a qq   desktop='^1'                follow=on focus=on
+bspc rule -a picgo   desktop='^1'             follow=on focus=on
+
+# Workspace 2 (Web browser)
+bspc rule -a Firefox desktop='^2'             follow=on focus=on locked=on
+bspc rule -a Notion detktop='^2'              follow=on focus=on
+
+# Workspace 3 (Code editor)
+bspc rule -a st-256color:st-256color:nvim desktop='^3'             follow=on focus=on locked=on
+
+# Workspace 4 (Reading and Text-editors)
+bspc rule -a Typora desktop='^4'              follow=on focus=on locked=on
+bspc rule -a Zathura desktop='^4' state=tiled follow=on focus=on
+
+# Workspace 5 (Sysinfo, MC and anythingelse)
+bspc rule -a st-256color:st-256color:btm desktop='^5'             follow=on focus=on
+bspc rule -a MultiMC5 desktop='^5'            follow=on focus=on
+
+# Workspace 6 (Music and Video)
+bspc rule -a Clementine desktop='^6'          follow=on focus=on 
+bspc rule -a netease-cloud-music desktop='^6' follow=on focus=on
+bspc rule -a vlc desktop='^6'                 follow=on focus=on
+
+# Others
 bspc rule -a Screenkey manage=off
