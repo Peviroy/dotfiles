@@ -88,7 +88,7 @@ bspc rule -a qq   desktop='^1'                follow=on focus=on
 bspc rule -a picgo   desktop='^1'             follow=on focus=on
 
 # Workspace 2 (Web browser)
-bspc rule -a Firefox desktop='^2'             follow=on focus=on locked=on
+bspc rule -a firefox desktop='^2'             follow=on focus=on locked=on
 bspc rule -a Notion detktop='^2'              follow=on focus=on
 
 # Workspace 3 (Code editor)
