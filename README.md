@@ -1,42 +1,47 @@
-# <p align="center">MY DOTFILES </p> 
+# 	<p align="center">MY DOTFILES </p> 
 
 Table of Contents
 =================
 
-* [Preface](#preface)
-* [Configure Arch &amp; Bspwm &amp; Polybar](#configure-arch--bspwm--polybar)
-      * [Hardware environment](#hardware-environment)
-     * [Arch installing(pre-in-post )](#arch-installingpre-in-post-)
-       * [[Time] confict](#time-confict)
-       * [[Suspend]Hibernate](#suspendhibernate)
-       * [[Driver]Audio](#driveraudio)
-       * [[Driver]Bluetooth](#driverbluetooth)
-       * [[Shell]Share rc](#shellshare-rc)
-       * [[Display]High DPI](#displayhigh-dpi)
-       * [[Nvidia]optimus-manager](#nvidiaoptimus-manager)
-       * [[DM] <a href="https://github.com/sddm/sddm">sddm</a>](#dm-sddm)
-     * [Bspwm](#bspwm)
-       * [[Wallpaper, blur] feh &amp; pywal](#wallpaper-blur-feh--pywal)
-       * [[Screenlock] betterlockscreen](#screenlock-betterlockscreen)
-       * [[Compositor] picom](#compositor-picom)
-       * [[Core] vim](#core-vim)
-       * [[Launcher] rofi](#launcher-rofi)
-       * [[Copaste] xsel](#copaste-xsel)
-       * [[IM] fcitx5-im](#im-fcitx5-im)
-       * [[Theme] set cursor themes](#theme-set-cursor-themes)
-       * [[Theme] apply gtk and qt themes to APPs](#theme-apply-gtk-and-qt-themes-to-apps)
-       * [[App] dolphin](#app-dolphin)
-       * [[About sudo] and npm](#about-sudo-and-npm)
-       * [[Screenshot] flameshot](#screenshot-flameshot)
-       * [[Large character] figlet](#large-character-figlet)
-       * [[Tencent] Wechat and qq](#tencent-wechat-and-qq)
-       * [[Rule] Bspwmrc/bspc](#rule-bspwmrc/bspc)
-     * [Polybar](#polybar)
-       * [brightness control](#brightness-control)
-       * [clipmenu](#clipmenu)
-       * [daily-poem](#daily-poem)
-       * [[keyboard] <a href="https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed">info-hackspeed</a>](#keyboard-info-hackspeed)
-       * [[shape] round corner](#shape-round-corner)
+   * [Table of Contents](#table-of-contents)
+      * [Preface](#preface)
+   * [Configure Arch &amp; Bspwm &amp; Polybar](#configure-arch--bspwm--polybar)
+         * [Hardware environment](#hardware-environment)
+      * [Arch installing(pre-in-post )](#arch-installingpre-in-post-)
+         * [[Time] conflict](#time-conflict)
+         * [[Suspend]Hibernate](#suspendhibernate)
+         * [[Driver]Audio](#driveraudio)
+         * [[Driver]Bluetooth](#driverbluetooth)
+         * [[Shell]Share rc](#shellshare-rc)
+         * [[Display]High DPI](#displayhigh-dpi)
+         * [[Nvidia]optimus-manager](#nvidiaoptimus-manager)
+         * [[DM] <a href="https://github.com/sddm/sddm">sddm</a>](#dm-sddm)
+      * [Bspwm](#bspwm)
+         * [[Wallpaper, blur] feh &amp; pywal](#wallpaper-blur-feh--pywal)
+         * [[Screenlock] betterlockscreen](#screenlock-betterlockscreen)
+         * [[Compositor] picom](#compositor-picom)
+         * [[Core] vim](#core-vim)
+         * [[Launcher] rofi](#launcher-rofi)
+         * [[Copaste] xsel](#copaste-xsel)
+            * [how to use](#how-to-use)
+         * [[IM] fcitx5-im](#im-fcitx5-im)
+            * [dependency](#dependency)
+         * [[Theme] set cursor themes](#theme-set-cursor-themes)
+         * [[Theme] apply gtk and qt themes to APPs](#theme-apply-gtk-and-qt-themes-to-apps)
+         * [[FileManager] dolphin](#filemanager-dolphin)
+         * [[ReasearchTool] zotero](#researchtool-zotero)
+         * [[About sudo] and npm](#about-sudo-and-npm)
+         * [[Screenshot] flameshot](#screenshot-flameshot)
+         * [[Large character] figlet](#large-character-figlet)
+         * [[Tencent] Wechat and qq](#tencent-wechat-and-qq)
+         * [[Rule] Bspwmrc/bspc](#rule-bspwmrcbspc)
+            * [Get info for bspc rule](#get-info-for-bspc-rule)
+      * [Polybar](#polybar)
+         * [brightness control](#brightness-control)
+         * [clipmenu](#clipmenu)
+         * [daily-poem](#daily-poem)
+         * [[keyboard] <a href="https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed">info-hackspeed</a>](#keyboard-info-hackspeed)
+         * [[shape] round corner](#shape-round-corner)
 
 ## Preface
 
@@ -869,11 +874,44 @@ Theme,不仅是cursor theme有系统级别作用域也有用户级.前者路径�
    
    <br><br>
 
-### [App] dolphin
+### [FileManager] dolphin
 
 `@tl;dr: just a good-looking file manager`
 
-[前面](#Apply gtk and qt themes to APPs)的目的之一就是在为dolphin做decoration.虽然终端下有更强大的file manager---ranger可以便捷化文件管理,但....或许是出于情怀吧.
+诚然终端下有跟vim生态紧密贴和的ranger,我仍然用起了图形化的`dolphin`.或许是出于情怀吧,折腾Manjaro-Plasma的日子有多长,同dolphin协同共进的道路就有多远.于我而言或许可也算作一种见证吧.
+
+<br>
+
+<br>
+
+### [ResearchTool] zotero
+
+`@tl;dr: a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.`
+
+从事学术研究便不会陌生于文献管理,面对众多的文献,如何布局好、如何同步好并非易事,这需要借助于一系列规则进行约束.作为组织个体与文献之间关系的重要一环,这当然可以凭借个体主观能力组织,但若是有了强大的工具,以健壮的工具作为平台的管理形式未必不是一个明智的选择.
+
+我目前的选择是Zotera,开源免费而强大.但目前的我其实并没有太多的发言权,Zotera的强大之处可以指路于此:[zotero+坚果云，免费跨平台文献管理最佳实践指南](https://zhuanlan.zhihu.com/p/112795057).当然官网wiki也是不胜详尽的.
+
+**`Zotero Sync`**
+
+但Zotero自带的文献**文件组织**是不尽如人意的:文献的pdf文件散落在编码得到的文件夹之中.于是Zotfile出现了,其可以以用户喜欢的方式制定文献文件的组织形式.于是形成了这样一种格局:**Zotero组织文献的元信息,Zotfile组织文献的pdf文件(Attachment).**
+
+此时,登陆Zotero账户便将获得元信息的自动同步,但文献的attachment却因其文件大小而不适合使用Zotero自带的服务器进行同步(Zotero免费云服务大小有限).这时便可以考虑使用云服务器进行同步.
+
+Zotero+Zotfile+Cloud的组合基本能涵盖掉PC端的同步需求.
+
+但问题在于在iPad端的同步如何呢?(假设是一枚iPad用户).在文献阅读神奇iPad上,虽然没有Zotero,但各大云服务厂商均对iPadOS有支持,所以文献的attachment的同步也是没有问题的.**可是此时的文献同步是割裂的**.这表现在网页端访问Zotero获得文献的元信息之后,欲图打开文献attachment则需要去翻云服务同步后的层层文件夹,而不能够如PC上一键打开.
+
+明白了这个需求后,再翻看这两篇文章便能明白人类早期驯服Zotero同步的不懈努力了.
+
+* [如何用ipad看文献？](https://www.zhihu.com/question/288186107/answer/1327966061)
+* [ZotExpert - Open Zotero Files in PDF Expert](https://github.com/MiracleXYZ/ZotExpert)
+
+上面的方法提供了在Safari上访问文献元信息便能一键打开PDF的功能.这很方便但也不是没有缺点.由于PDF Expert在文献阅读上的能力并不如Liquidtext等其他专门的文献阅读工具,**此时便需要将文献导出到相应的工具,并在阅读后重新将文献导出回PDF Expert以同步.**对此或许有不少解法,但只要PDF Expert文献阅读功能不是最强的或其他文献阅读工具没有内置文件管理器(能通过safari直接访问)便暂时无法解决.这一缺陷使得在文献较少而容易定位时,倒不如一步步去翻文件夹来得方便.
+
+**`Fix`**
+
+[zotero+坚果云，免费跨平台文献管理最佳实践指南](https://zhuanlan.zhihu.com/p/112795057)中推荐的[zotero-scihub](https://link.zhihu.com/?target=https%3A//github.com/ethanwillis/zotero-scihub)目前存在bug而无法很好地运转,目前也以以此patch代替[Patrixe/zotero-scihub](https://github.com/Patrixe/zotero-scihub)
 
 <br>
 
