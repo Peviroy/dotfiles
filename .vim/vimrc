@@ -1,12 +1,16 @@
-"  __  __        __     _____ __  __ ____   ____
-" |  \/  |_   _  \ \   / /_ _|  \/  |  _ \ / ___|
-" | |\/| | | | |  \ \ / / | || |\/| | |_) | |
-" | |  | | |_| |   \ V /  | || |  | |  _ <| |___
-" |_|  |_|\__, |    \_/  |___|_|  |_|_| \_\\____|
-"         |___/
+" ==================================================================================
+"  ___      ___  ___  ___   ___      ___  __     ___      ___   _______    ______   
+" |"  \    /"  ||"  \/"  | |"  \    /"  ||" \   |"  \    /"  | /"      \  /" _  "\  
+"  \   \  //   | \   \  /   \   \  //  / ||  |   \   \  //   ||:        |(: ( \___) 
+"  /\\  \/.    |  \\  \/     \\  \/. ./  |:  |   /\\  \/.    ||_____/   ) \/ \      
+" |: \.        |  /   /       \.    //   |.  |  |: \.        | //      /  //  \ _   
+" |.  \    /:  | /   /         \\   /    /\  |\ |.  \    /:  ||:  __   \ (:   _) \  
+" |___|\__/|___||___/           \__/    (__\_|_)|___|\__/|___||__|  \___) \_______) 
+" ==================================================================================
+" Forked: @theniceboy
+" Author: @peviroy
+" The aim of the vimrc is to keep it simple and pure, complex work should be given to nvim
 
-" Forked from @theniceboy
-" I'd keep it simple and pure, complex work should be given to nvim
 
 " ===
 " === Auto load for first time uses
@@ -17,26 +21,31 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 " ====================
 " === Editor Setup ===
 " ====================
-
 " ===
 " === System
 " ===
+set encoding=utf-8
+set clipboard=unnamed
+set autochdir
+set formatoptions-=tc
+set completeopt=longest,noinsert,menuone,noselect,preview  " completion popup menu
+
+" Enjoy vi-impored
 set nocompatible
 filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
-set encoding=utf-8
-
-set clipboard=unnamed
 
 " Prevent incorrect backgroung rendering
 let &t_ut=''
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 
 " ===
 " === Main code display
@@ -44,51 +53,56 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set number
 set relativenumber
 set ruler
+set colorcolumn=100		" ruler at 100th column
 set cursorline
+set virtualedit=block "wholy rectangular area in visual block mode
 syntax enable
 syntax on
+
 
 " ===
 " === Editor behavior
 " ===
 " Better tab
-set expandtab
+set noexpandtab		" no convert to space
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set autoindent
 set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
+"
 
 " Prevent auto line split
 set wrap
 set tw=0
-
 set indentexpr=
-" Better backspace
-set backspace=indent,eol,start
 
+" Folding
 set foldmethod=indent
 set foldlevel=99
+set foldenable
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-" ===
-" === Window behaviors
-" ===
+" Window behaviors
 set splitright
 set splitbelow
+
+" Timeout
+set ttimeoutlen=0		"keycode timeout immediately
+set notimeout				"mapping never timeout
+
 
 " ===
 " === Status/command bar
 " ===
-set laststatus=2
-set autochdir
+set laststatus=2	"status line always on
 set showcmd
-set formatoptions-=tc
 
 " Show command autocomplete
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
@@ -97,7 +111,6 @@ set wildmode=longest,list,full
 
 " Searching options
 set hlsearch
-exec "nohlsearch"
 set incsearch
 set ignorecase
 set smartcase
@@ -112,7 +125,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " ===
 " === Basic Mappings
 " ===
-
 " Set <LEADER> as <SPACE>
 let mapleader=" "
 
@@ -132,6 +144,7 @@ map <LEADER>rc :e ~/.vim/vimrc<CR>
 
 " Undo operations
 noremap l u
+
 " Undo in Insert mode
 inoremap <C-l> <C-u>
 
@@ -139,18 +152,23 @@ inoremap <C-l> <C-u>
 noremap k i
 noremap K I
 
+" Indentation
+nnoremap < <<
+nnoremap > >>
+
+" make Y to copy till the end of the line
+nnoremap Y y$
+
 " Copy to system clipboard
-vnoremap Y :w !xclip -i -sel c<CR>
+vnoremap Y "+y
 
 " Search
 map <LEADER><CR> :nohlsearch<CR>
-noremap = nzz
-noremap - Nzz
 
 " Duplicate words
 map <LEADER>fd /\(\<\w\+\>\)\_s*\1
 
-" Others
+" Add new line without enter insert mode
 map <LEADER>o o<Esc>u
 
 
@@ -253,8 +271,9 @@ inoremap <C-x> <Esc>ea<C-x>s
 " Press ` to change case (instead of ~)
 map ` ~
 
-imap <C-c> <Esc>zza
-nmap <C-c> zz
+" Put focused line in the center; this disables <C-z>(move to bg)
+imap <C-z> <Esc>zza
+nmap <C-z> zz
 
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
@@ -282,7 +301,7 @@ func! CompileRunGcc()
   endif
 endfunc
 
-map R :call CompileBuildrrr()<CR>
+map <LEADER>R :call CompileBuildrrr()<CR>
 func! CompileBuildrrr()
   exec "w"
   if &filetype == 'vim'
