@@ -95,6 +95,7 @@ set splitbelow
 
 " Timeout
 set ttimeoutlen=0		"keycode timeout immediately
+set ttimeout
 set notimeout				"mapping never timeout
 
 
@@ -102,6 +103,7 @@ set notimeout				"mapping never timeout
 " === Status/command bar
 " ===
 set laststatus=2	"status line always on
+set noshowmode
 set showcmd
 
 " Show command autocomplete
@@ -131,8 +133,6 @@ let mapleader=" "
 " Column (:) mods
 map ; :
 map q; q:
-map <LEADER>/ :!
-map <LEADER>r :r !
 map <LEADER>sr :%s/
 
 " Save & quit
@@ -271,15 +271,11 @@ inoremap <C-x> <Esc>ea<C-x>s
 " Press ` to change case (instead of ~)
 map ` ~
 
-" Put focused line in the center; this disables <C-z>(move to bg)
-imap <C-z> <Esc>zza
-nmap <C-z> zz
-
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
 
 " Compile function
-map <LEADER>r :call CompileRunGcc()<CR>
+map <LEADER>R :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'
@@ -298,16 +294,6 @@ func! CompileRunGcc()
     exec "!time python3 %"
   elseif &filetype == 'html'
     exec "!firefox % &"
-  endif
-endfunc
-
-map <LEADER>R :call CompileBuildrrr()<CR>
-func! CompileBuildrrr()
-  exec "w"
-  if &filetype == 'vim'
-    exec "source $MYVIMRC"
-  elseif &filetype == 'markdown'
-    exec "echo"
   endif
 endfunc
 
