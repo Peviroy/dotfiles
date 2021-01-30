@@ -428,13 +428,13 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
-Plug 'bpietravalle/vim-bolt'
 Plug 'theniceboy/nvim-deus'
-"Plug 'arzg/vim-colors-xcode'
+Plug 'arcticicestudio/nord-vim'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
 Plug 'ojroques/vim-scrollstatus'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -612,32 +612,28 @@ set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "set background=dark
 "let ayucolor="mirage"
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"let g:one_allow_italics = 1
-
-"color dracula
-"color one
-color deus
-"color gruvbox
+"color deus
 "let ayucolor="light"
-"color ayu
-"color xcodelighthc
 "set background=light
-"set cursorcolumn
+
+""" Nord
+colorscheme nord
+let g:nord_cursor_line_number_background = 1
+let g:nord_uniform_status_lines = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_underline = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
 
-" ===================== Start of Plugin Settings =====================
-
-
-" ===
-" === eleline.vim
-" ===
+" Status bar
+let g:airline_extensions = []
 let g:airline_powerline_fonts = 0
-
-
+let g:airline_highlighting_cache = 1
+" ===================== Start of Plugin Settings =====================
 " ==
 " == GitGutter
 " ==

@@ -208,6 +208,13 @@ inoremap <C-E> <Esc>5<C-e>a
 
 
 " ===
+" === Searching
+" ===
+noremap - N
+noremap = n
+
+
+" ===
 " === Window management
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
@@ -385,15 +392,8 @@ let ayucolor="light"  " for light version of theme
 " let ayucolor="dark"   " for dark version of theme
 colorscheme snazzy
 let g:SnazzyTransparent = 1
-let g:airline_theme='nord_minimal'
+let g:airline_theme='base16_nord'
 set background=dark
-
-let g:lightline = {
-  \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
-  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
-  \     }
-  \ }
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
