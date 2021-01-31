@@ -6,7 +6,7 @@ Table of Contents
    * [Table of Contents](#table-of-contents)
       * [Preface](#preface)
    * [Configure Arch &amp; Bspwm &amp; Polybar](#configure-arch--bspwm--polybar)
-         * [Hardware environment](#hardware-environment)
+      * [Hardware environment](#hardware-environment)
       * [Arch installing(pre-in-post )](#arch-installingpre-in-post-)
          * [[Time] conflict](#time-conflict)
          * [[Suspend]Hibernate](#suspendhibernate)
@@ -57,7 +57,7 @@ Table of Contents
 
 首先是正值换电脑,我打算从manjaro跑到arch看看.而arch是无拘无束的,从命令行开始的航行让我明白前方并不只有KDE等知名的桌面环境.
 
-其次是一位up@TheCW给我展现了我此前未曾知晓的tilling window manger及全键盘控制的愉悦感.当然还有其期望为开源社区贡献力量的决心与努力.
+其次是一位up@TheCW给我展现了我此前未曾知晓的tilling window manager 及全键盘控制的愉悦感.当然还有其期望为开源社区贡献力量的决心与努力.
 
 另外,在目前正在进行的配置过程中,我深感开源社区的伟大,也是由此我方才在安装完Arch,配置完KDE与初步开展Bspwm后克服阻力开启此文.
 
@@ -73,7 +73,16 @@ Table of Contents
 
 <br>
 
+---
+继上回已是两周,但好像远没有抵达尽头.原以为已进行到深水区,但当翻开另一页,更广阔的世界在展开,我的旅途不过刚刚开始.
 
+就这篇文档而言,不知不觉已达12k+字.回顾我曾使用的几个操作系统,不曾有引力吸引着我驻留启笔,这或许是arch的魅力所在吧.我开始明白arch提供一个 minimal base system 的用意何在,我的思路开始改变,我动笔,不仅是在自我记录也是在希求着分享.
+
+诚然这相当折腾,但David Zhang的这篇文章:[The Fascinating Arch Linux RICE](https://crispgm.com/page/the-fascinating-arch-linux-rice.html)给了我相当大的安慰,于是新的点子在逐渐萌发,我期望将这种情感分享给世界.
+
+<br>
+
+<br>
 
 # Configure Arch & Bspwm & Polybar
 
