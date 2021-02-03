@@ -34,6 +34,7 @@ Table of Contents
          * [[Screenshot] flameshot](#screenshot-flameshot)
          * [[Large character] figlet](#large-character-figlet)
          * [[Tencent] Wechat and qq](#tencent-wechat-and-qq)
+         * [[Rolling release] Python environment](#rolling-release-python-environment)
          * [[Rule] Bspwmrc/bspc](#rule-bspwmrcbspc)
             * [Get info for bspc rule](#get-info-for-bspc-rule)
       * [Polybar](#polybar)
@@ -1047,6 +1048,52 @@ figlet的字体路径由`figlet -I2`指出,但默认提供的字体不是很富�
 话说回来,此版本基本没有缺陷,甚至能够调用系统通知功能来传递消息.总之是十分值得体验的了.我所能感知的唯一还缺少的功能可能是无法最小化至后台了.
 
 但没想到最大的瓶颈不在自身而在微信.多年过去了,微信无法在电脑与平板同时登陆的问题仍没有解决.只能说很令人失望,与其在"拍一拍"和"特效表情"这些花边上花力气不如实实在在改进下用户体验.
+
+<br>
+
+<br>
+
+### [Rolling release] Python environment
+
+`@tl;dr: avoid breaking with upgrades`
+
+滚动更新意味着永远的前卫.可是在向前的过程中,难免会有一些软件暂时掉下链子或者再难以兼容旧版本了.这点对于日常使用来说并没有什么不好的,可是若是作为开发环境来看,却缺少了稳定性.
+
+这一滚动之痛在python,node等中表现多一些,因为在管理着大大小小的package,不是所有开发环节的package都uptodade.
+
+而在arch之中,当system wide的python进行了大型的版本跃迁时,就将遇到一段时间一些package没有跟进的情况,此外一些项目可能就永远停留在了某个python version而没有跟进脚步因此出现一些兼容性问题.
+
+**`The conflicts`**
+
+就我的情况来说,我有使用cuda与pytorch的需求.曾经粗浅的解决方案是:1.安装旧版本的cuda以兼容尽量多的版本并忽略更新2.在anaconda下创建各pytorch环境并使用系统级cuda.
+
+这一措施或许在Ubuntu下不存在较大问题,可在Arch下这是病态的,其根本性错误在于忽略了更新,若是cuda是stand alone倒好因为并不影响其他,可一旦某package对cuda存在依赖或反之,那么这就将导致连锁的影响.就如同飞驰的火车永远落下了一个部件于过去--这是存在隐患的.当然不可否认,面向滚动更新下的回滚存在有一些解决方案,但这理念未必同arch相符.
+
+**`Rolling in arch`**
+
+不过若是接受arch的理念后,这一问题并不会存在.面向outdaded package的方案是去积极地fix而不是等待.落后的package应当被进行标记,有错误的更新应当被反馈与讨论.
+
+作为arch社区的一员,我们感慨于社区之庞大,同时也可以献出自己的一份力量.在这过程中,是对linux的更深入掌握,是脑海知识的不断迭代保持更新.
+
+所以我不再强依赖于anaconda所提供的虚拟环境.我逐渐青睐于将package主要由system wide python管理,这其中的outdaded会是少数,而得益于有pacman参与维护conflict是更少的,系统环境是更贴和的.
+
+**`My solution`**
+
+我滚动更新driver,滚动更新cuda,使用着由python-pytorch-opt-cuda提供的pytorch.
+
+* 对于旧版本的项目首先是勘探兼容性,这让我及时捕捉框架的变迁;
+* 无可奈何时方使用anaconda的conda源安装全套pytorch与cuda虚拟环境.
+* 因为driver对cuda是向下兼容的,保持driver更新的同时形成了一主(system)多副(virtual)的cuda分布情况.虽然这形式上同原先的多virtual environment有所类似,但理念是不同的.
+
+此外,值得注意的是绝大多数使用虚拟环境的初衷即**"虚拟环境所允诺的兼容性"其实是典型的误解**.首先,若非拷贝则不存在完全一样的环境.此外,真正的兼容性考虑的是硬件层面的兼容,软件层面的兼容是任何一个package所应自我实现的.可参阅如下:
+
+>  That's false. Unless you are literally copying your venv folder to  another computer, which you should never do. But that's not a  compatibility issue, it's a fundamental misunderstanding of what and how to use a venv. Compatibility is only a concern when you write Python  code which only runs on say GPU and tensorflow 1.13.1 and then you try  and run it on a computer without a GPU and another version of  tensorflow. I mean if you try hard enough, I'm sure you'll be able to do it, but that's beside the point. Tensorflow itself makes sure you can  run your code on any machine as long as you've installed tensorflow  correctly on said machine. You have not done so in this instance.
+
+**`References`**
+
+https://www.reddit.com/r/archlinux/comments/e7ux7u/python_cuda_deep_learning_setup_strategies_to/
+
+https://www.reddit.com/r/archlinux/comments/bpahim/cant_get_tensorflow_gpu_to_work_on_arch/envm3i1/
 
 <br>
 
