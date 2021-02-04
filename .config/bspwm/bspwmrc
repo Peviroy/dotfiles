@@ -54,7 +54,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 #===== Bspwm config
 #========================================
 # Virtual desktop setting; Also multi monitor supplied
-bspc monitor -d I II III IV V VI
+bspc monitor -d I II III IV V VI VII
 
 # Coloring
 bspc config active_border_color	 "#81a1c1"

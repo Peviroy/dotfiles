@@ -26,6 +26,7 @@ ws-icon-2 = 3:Coding;
 ws-icon-3 = 4:Learning;
 ws-icon-4 = 5:Fun;
 ws-icon-5 = 25:Desktop;
+ws-icon-6 = 6:Stash;
 ws-icon-default = 
 
 ; color
@@ -56,6 +57,7 @@ ws-icon-2 = III;
 ws-icon-3 = IV; 
 ws-icon-4 = V; 
 ws-icon-5 = VI; 
+ws-icon-6 = VII;
 
 label-focused = %icon%
 label-focused-underline = ${colors.nord7}
