@@ -17,15 +17,14 @@ Table of Contents
          * [[Nvidia]optimus-manager](#nvidiaoptimus-manager)
          * [[DM] <a href="https://github.com/sddm/sddm">sddm</a>](#dm-sddm)
       * [Bspwm](#bspwm)
+      	 * [[Terminal] Suckless terminal(st)](#terminal-suckless-terminalst)	
          * [[Wallpaper, blur] feh &amp; pywal](#wallpaper-blur-feh--pywal)
          * [[Screenlock] betterlockscreen](#screenlock-betterlockscreen)
          * [[Compositor] picom](#compositor-picom)
          * [[Core] vim](#core-vim)
          * [[Launcher] rofi](#launcher-rofi)
          * [[Copaste] xsel](#copaste-xsel)
-            * [how to use](#how-to-use)
          * [[IM] fcitx5-im](#im-fcitx5-im)
-            * [dependency](#dependency)
          * [[Theme] set cursor themes](#theme-set-cursor-themes)
          * [[Theme] apply gtk and qt themes to APPs](#theme-apply-gtk-and-qt-themes-to-apps)
          * [[FileManager] dolphin](#filemanager-dolphin)
@@ -520,6 +519,59 @@ sddm下theme是不少的,我选择的是[sugar-candy](https://framagit.org/Maria
 
 <br>
 
+### [Terminal] Suckless terminal(st)
+
+`@tl;dr: simple and powerful`
+
+作为一名曾经的plasma用户,yakuake和dolphin embedded terminal提供全方位环境让我安定于konsole提供的用户体验.
+
+可单独作为一个terminal monitor而言,koncole虽然友好但却显得有些臃肿.
+
+所以当从floating WM转移到tilling WM,下拉式的终端不再需要(yakuake),而文件管理器内嵌终端的优势也可由终端+text-based文件管理器替代.因此我同konsole道别,而新的伙伴是suckless terminal.
+
+st由suckless.org维护.起名为suckless....怎么说呢,的确有些怪怪的,但其身体力行minimalist的理念,可谓是Unix philosophy的践行者.难以想象,秉持着不超过 2000 标准行的原则他们写出了一众功能强大而又精简的软件,这相当值得尊敬.
+
+于是我用上了st,虽然其配置需要直接面向源代码,但对于习惯了koncole的我而言,其响应可谓是神速,而且在终端图形的渲染方面来看也是更为强大的(原生支持powerline)
+
+尤其是熟悉了以终端为核心时,响应速度的快慢成为了使用体验的核心评判标准.在这这种意义上来看,简约而面面俱到的st便是一个出色的pick.
+
+**`Powerful enough yet some extensions needed `**
+
+精简的代价是原生功能只满足了最基础的生存需求.对于一些发展性需求并不是很好地支持,不过好在suckless.org提供了官方或社区自制的patch.因此可以通过`patch -i patch.diff`来打上补丁,虽然还是有些麻烦.我最初打上的几个patch如下所示:
+
+```
+ st-alpha  	                 # [Beautify]alpha background
+ st-anysize                  # [Adjust]allow any window size
+ st-blinking_cursor          # [Beautify]blinking~
+ st-desktopentry             # generate entry when make
+ st-dracula                  # [Beautify]theme
+ st-font2                    # font2
+ st-fontfix.diff 		     # font fix
+ st-hidecursor               # [Beautify]
+ st-ligatures-alpha-scrollback #[Beautify]ligature
+ st-scrollback               # [Scroll]
+ st-scrollback-mouse-altscreen #[Scroll]Mouse
+ st-universcroll             # [Scroll]Mouse
+```
+
+这样一来就体验而言已经是基本令人满意了.唯一显眼的缺点是需要自己维护的patch比较多,这在版本更替时比较麻烦.
+
+总之已经可以enjoy it~
+
+**`Lukesmith's build of st`**
+
+虽然已经很棒了,但在我这里仍然碰见了一个重要的问题(至少在我这里):icon图形无法显示全面.这表现在需要两格占位的icon在单独显示时只能显示其单格占位的图形,而另一半是被遮挡的.虽然绝大部分时间是无需跟icon打交道,但偶尔见到残缺的icon仍然是令人不悦的.
+
+而[luke's build](https://github.com/LukeSmithxyz/st)解决了我的问题,而且还自带了相当丰富的patch,基本涵盖了我曾所使用的patch.
+
+基于这两点,选择luke维护的st显然更明智.顺带一提,lukesmith也是位youtuber,其视频相当有意思.
+
+但在我这里出现了一个小型的bug,这表现为使用Alt+Ctrl时的内嵌dmenu崩溃,如果有所遇到可见[issue#240](https://github.com/LukeSmithxyz/st/issues/240).
+
+<br>
+
+<br>
+
 ### [Wallpaper, blur] feh & pywal
 
 `@tl;dr: wallpaper manager and image viewer `
@@ -703,7 +755,7 @@ sudo pacman -S rofi
 
 于是通过xsel, 得以轻松地将字段输出到剪切板，而后只需paste即可。
 
-#### how to use
+**`how to use`**
 
 在sxhkd中注册快捷键如下：
 
@@ -722,7 +774,7 @@ super + alt + v
 
 I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 for a while, its fluenquency as well as its great dictionaries conquer me wholely. See [拥抱 Fcitx5](https://blog.coelacanthus.moe/tech/welcome-to-fcitx5/) for detail.
 
-#### dependency
+**`dependency`**
 
 * Main - fcitx5-im
 * Theme - fcitx5-material-color
