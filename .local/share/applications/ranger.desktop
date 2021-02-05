@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=ranger
+GenericName=Ranger
+Comment=A cross-platform text-based file manager
+
+Exec=st -f "JetBrainsMono Nerd Font:pixelsize=28:antialias=true:autohint=true" -e "ranger"
+Terminal=false
+
+Icon=/usr/share/icons/Papirus-Dark/64x64/apps/sk1.svg
+Keywords=FileManager;
+Type=Application
+Categories=Utility;System;FileTools;FileManager;
+StartupNotify=false

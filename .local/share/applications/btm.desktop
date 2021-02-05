@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=btm
+GenericName=bottom
+Comment=A cross-platform graphical process/system monitor.
+
+TryExec=btm
+Exec=btm
+Terminal=true
+
+Icon=/usr/share/icons/Papirus-Dark/64x64/apps/kubrick.svg
+
+Keywords=System;
+Type=Application
+Categories=Utility;System;
+StartupNotify=false

@@ -717,7 +717,7 @@ picom可能会在firefox上有奇怪的表现,相关解决方案参阅arch wiki.
 
 `@tl;dr: launcher plays a key row in tilling window manager`
 
-平铺式桌面带来的键盘为主的操作习惯,让我们减少了对鼠标的依赖.然而浮动窗口下的鼠标操作并非低效的,其在以及快速找到软件或文件的启动位置有键盘难以比拟的优势.在寻找众多窗口中的一个时,鼠标往往只需要几次点击(Win10: <kbd>win</kbd>+<mouseclick>),而平铺桌面下的键盘则往往需要启动终端输入命令.这时launcher的优势便体现出来了.
+平铺式桌面带来的键盘为主的操作习惯,让我们减少了对鼠标的依赖.然而浮动窗口下的鼠标操作并非低效的,其在以及快速找到软件或文件的启动位置有键盘难以比拟的优势.在寻找众多窗口中的一个时,鼠标往往只需要几次点击(Win10: Start menu+<mouseclick>),而平铺桌面下的键盘在默认缺少桌面以及dock栏的情况下则往往需要启动终端输入命令.这时launcher的优势便体现出来了.
 
 Rofi是我目前见过的最棒的launcher,它脱胎于dmenu但相比dmenu有更高的拓展性,而且在集成众多功能时仍能保持快速启动.
 
@@ -725,11 +725,11 @@ Rofi是我目前见过的最棒的launcher,它脱胎于dmenu但相比dmenu有更
 
 **`How to use`**
 
-Rofi是一次性启动的(绝大多数launcher如此),也就是说,非daemon形式而是每次启动窗口都需要一次命令输入.或许显得繁琐但这是一种安全而纯净的形式.
+Rofi是一次性启动的(绝大多数launcher如此),也就是说,非daemon形式而是每次启动窗口都需要一次命令输入.如果是初次接受难免会觉得这是一种繁琐的方式,但在熟悉之后将会发觉这一种安全而纯净的形式.
 
-因此,最佳的实践方式是将rofi的启动配置为快捷键.
+最佳的实践方式是将rofi的启动配置为快捷键.
 
-rofi的配置文件存储在`~/.config/rofi/config.rasi`,其配置项贴心地可在`rofi -h`中查看,此外还可以使用`rofi -upgrade-config`来生成默认配置.
+rofi的配置文件存储在`~/.config/rofi/config.rasi`,其配置项贴心地可在`rofi -h`中查看(当真是事无巨细),此外还可以使用`rofi -upgrade-config`来生成默认配置.
 
 **`Dependencies`**
 
@@ -737,7 +737,31 @@ rofi的配置文件存储在`~/.config/rofi/config.rasi`,其配置项贴心地�
 sudo pacman -S rofi
 ```
 
+**`Launch terminal based application`**
 
+在通过rofi启动app后,我们往往还希望不仅仅是启动gui软件.这是因为很多软件是text-based也即是在终端下运行的.当然这点已经被freedesktop.org想到了.
+
+使用launcher来启动一个app本质上是通过一个个.desktop entry来启动app(不仅launcher如此).而查看这一个个desktop entry(分布于~/.local/share/applications与/usr/share/applications)以及其[doc文档](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys),将发现其是支持启动一个终端app的.一个相当简略的模板如下:
+
+```sh
+[Desktop Entry]
+Name=btm
+GenericName=bottom
+Comment=A cross-platform graphical process/system monitor.
+
+TryExec=btm
+Exec=btm
+Terminal=true
+
+Icon=/usr/share/icons/Papirus-Dark/64x64/apps/kubrick.svg
+
+Keywords=System;
+Type=Application
+Categories=Utility;System;
+StartupNotify=false
+```
+
+当然也可以利用终端模拟器--command的方式来启动.此时`Exec=<your terminal> -c "<app>"` `Terminal=False`.
 
 <br><br>
 

@@ -92,14 +92,15 @@ bspc rule -a firefox desktop='^2'             follow=on focus=on locked=on
 bspc rule -a Notion detktop='^2'              follow=on focus=on
 
 # Workspace 3 (Code editor)
-bspc rule -a St:st:nvim desktop='^3'             follow=on focus=on locked=on
+bspc rule -a St:st:nvim desktop='^3'          follow=on focus=on locked=on
+bspc rule -a St:st:ranger desktop='^3'        follow=on focus=on locked=on
 
 # Workspace 4 (Reading and Text-editors)
 bspc rule -a Typora desktop='^4'              follow=on focus=on locked=on
 bspc rule -a Zathura desktop='^4' state=tiled follow=on focus=on
 
 # Workspace 5 (Sysinfo, MC and anythingelse)
-bspc rule -a St:st:btm desktop='^5'             follow=on focus=on
+bspc rule -a St:st:btm desktop='^5'           follow=on focus=on
 bspc rule -a MultiMC5 desktop='^5'            follow=on focus=on
 
 # Workspace 6 (Music and Video)
