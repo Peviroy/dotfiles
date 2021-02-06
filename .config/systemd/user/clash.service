@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/peviroy/Projects/MyBash/clash.sh
+ExecStart=sh %h/Scripts/clash.sh
 StandardOutput=null
 StandardError=journal
 Restart=on-abort
