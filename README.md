@@ -655,12 +655,29 @@ For wallblur:
 
 `@tl;dr: fast and sweet looking lock script based on i3-lock-color` 
 
-精美的锁屏程序往往并不流畅,betterlockscreen.sh简短但让pretty screen lock重新快捷.
+精美的锁屏程序往往以流畅度为代价,而betterlockscreen作为一个简短的shell脚本,采用缓存的方式大大提高了效率.
+
+而除此之外,还提供了锁屏外观的定制,这不限于壁纸模糊,暗化等常规功能,乃至锁屏界面的色调,欢迎句都是完全自由的.
+
+其行为特征也由`-h`获得,而色调的设置可在`~/.config/betterrc`中完成(cp /usr/share/doc/betterlockscreen/examples/betterlockscreenrc ~/.config)
+
+**`Lock when idle`**
+
+老版本的betterlockscreen貌似曾提供过自动记时锁屏功能,但可惜后来不再提供.不过也确实,锁屏计时有用但对于betterlockscreen而言,是冗余的.而且,其涉及的稳定性,安全性问题也要求作为一个独立的项目来支持.
+
+Arch wiki上所提到的几个锁屏计时程序好像有些年头了.而幸运的是我找到了仍在积极维护着xidlehook.
+
+本想就此稍加展开,但后来感觉好像没有太大必要,因为xidlehook提供的README已经足够详细,我甚至从其中学到了梦寐以求的锁屏前夕暗淡屏幕的方案.总之xidlehook十分强大且不限于锁屏.
 
 **`Dependencies`**
 
+[(Github)betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)
+
+[(Github)xidlehook](https://github.com/jD91mZM2/xidlehook)
+
 ```
 imagemagick feh xorg-xrandr xorg-xdpyinfo betterlockscreen(aur) i3-lock-color(aur)
+libxcb, libXScrnSaver(aka libxss) xidlehook
 ```
 
 <br>

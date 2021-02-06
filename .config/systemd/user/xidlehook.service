@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatic Screen Locker
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=sh %h/.config/systemd/user/xidlehook.sh
+
+[Install]
+WantedBy=multi-user.target
