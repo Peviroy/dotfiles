@@ -807,19 +807,37 @@ super + alt + v
 
 <br><br>
 
-### [IM] fcitx5-im
+### [IM] fcitx5
 
-`@tl;dr: may be a new fcitx better for Chinese user`
+`@tl;dr: may be a new fcitx framework better for Chinese user`
 
-曾使用过fcitx+rime, 这一度是我的主力输入法。而我抱着侥幸的心理安装了fcitx5后,其凭借其丝滑与良好的词库反馈让我成功真香。
+中文输入曾深深困扰着我.最初少不更事按着CSDN上千篇一律的帖子使用上了搜狗输入法,但推荐是推荐到了,道理却远没有讲明白.而fcitx-sogoupinyin貌似是存在bug的,经常性会遇见崩溃的问题.(至少当时是如此)
 
-I used to deploy fcitx&rime as my major input method. But after i tried fcitx5 for a while, its fluenquency as well as its great dictionaries conquer me wholely. See [拥抱 Fcitx5](https://blog.coelacanthus.moe/tech/welcome-to-fcitx5/) for detail.
+后来开始明白fcitx作为一个输入法框架,而fcitx-sogoupinyin只是一个输入法.于是开始清晰哪些崩溃是由fcitx造成的而哪些是sogoupinyin造成的.不过,后来发现了rime,因而毅然放弃fcitx-sogoupinyin.
 
-**`dependency`**
+rime作为一个出色的输入法的确给我带来了更好的输入体验,其定制性非常棒,无论是自己做词典,自己配置输入习惯,标点映射等等.虽然有些折腾了点.但也不是说未曾碰到过问题,过大的自主空间与不充分的时间投入让一些本身非常简单的问题变得难以捕捉,fcitx框架也曾在某些情况出现bug而无法正常使用.
 
-* Main - fcitx5-im
-* Theme - fcitx5-material-color
-* Dict - fcitx5-pinyin-zhwiki ....
+于是借着换新系统之际,我找到了fcitx5这个相当相当适合于中文输入的输入法框架.
+
+* 其优点首先在于十分完善的gui配置措施,这是远远胜于fcitx的;
+
+* 其次,fcitx5其自带的中文输入异常强大足以覆盖所有需求,因此摆脱了复杂的定制;
+
+* 而且,就目前的使用来看,fcitx5表现地十分稳定而没有出现过bug.
+
+就这么三点而言,已经足够我将fcitx5视为主力输入法了,更何况,其还提供了全面的维基词库([fcitx5-pinyin-zhwiki](https://aur.archlinux.org/packages/fcitx5-pinyin-zhwiki/))和足够亮眼的主题([fcitx5-material-color](https://archlinux.org/packages/?name=fcitx5-material-color)),更不用提它还提供了对rime的支持.
+
+**`Configuration`**
+
+基本所有的配置都可以在fcitx5-configtool上完成,不过对于一些写在system wide的配置是需要翻一翻的.
+
+**中文半角全角字符映射表**
+
+​	有些时候,希望默认的中文标点能够进行一些配置,譬如对于全角/半角冒号.其中配置可以在`/usr/share/fcitx5/punctuation`中找到.
+
+**emoji输入**
+
+​	在中文输入下按下<kbd>;</kbd>,将进入quickphase模式,此时能输出不少定制化内容,尤其是emoji.同样在全模式下可以通过<kbd>super</kbd>+<kbd>;</kbd>触发.不过其内容需要输入相应的英文进行引导,其引导的内容可见于`/usr/share/fcitx5/data/quickphrase.d`,其中就包含了千行的emoji映射.这对于输入法更好地输出emoji是大有帮助的.
 
 <br><br>
 
