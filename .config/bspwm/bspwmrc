@@ -25,8 +25,7 @@ export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
 # Start compositer
 nohup picom -f >/dev/null 2>&1 &  # effct of fade
 
-# Set background image randonly with feh
-#feh --bg-fill --no-fehbg --randomize $HOME/Pictures/Home_Slide/*
+# Set background image randonly with pywal
 wal  -ste -lq -i $HOME/Pictures/Home_Slide
 
 # Blur desktop wallpaper when windows are open
