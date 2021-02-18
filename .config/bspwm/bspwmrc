@@ -31,8 +31,8 @@ wal  -ste -lq -i $HOME/Pictures/Home_Slide
 # Blur desktop wallpaper when windows are open
 sh $HOME/Scripts/wallblur.sh &>/dev/null &
 
-# Polybar
-sh $HOME/.config/polybar/launch.sh
+# Polybar; to make sure services already boot
+sh -c "sleep 3s $HOME/.config/polybar/launch.sh"
 
 # Message notifier
 /usr/bin/dunst &

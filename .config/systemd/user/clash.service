@@ -1,20 +1,20 @@
 [Unit]
 Description=Clash daemon
-After=network.target
+Wants=iwd.service
+After=iwd.service
 
 
 [Service]
 Type=simple
 EnvironmentFile=%h/.config/.clash_subscription
 Environment=CONFIG_YAML="%h/.config/clash/config.yaml"
-ExecStartPre=/bin/curl ${SUBSCRIPTION} -o ${CONFIG_YAML}
+ExecStartPost=/bin/curl ${SUBSCRIPTION} -o ${CONFIG_YAML}
 ExecStart=/usr/bin/clash
+Restart=on-abort
 
 StandardOutput=null
 StandardError=journal
 
-Restart=on-abort
-
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target multi-user.target
