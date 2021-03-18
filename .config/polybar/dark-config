@@ -6,8 +6,10 @@ include-file = $HOME/.config/polybar/nord-down
 include-file = $HOME/.config/polybar/nord-config
 
 [bar/base]
-theme = dark
+dpi = ${config.dpi}
 monitor = ${config.monitor}
+
+theme = dark
 width = ${config.width}
 height = ${config.height}
 offset-x = ${config.offset-x}
@@ -17,7 +19,6 @@ padding-left = ${config.padding-left}
 padding-right = ${config.padding-right}
 
 fixed-center = ${config.fixed-center}
-dpi = ${config.dpi}
 
 background = ${colors.background}
 foreground = ${colors.foreground}

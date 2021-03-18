@@ -11,10 +11,12 @@
 #==================================================================================
 
 #==============================
-#===== Auto start
+#===== Monitor setup: DPI setting for multi monitors:
 #==============================
-# HiDPI; 1.5scale;
-xrandr --dpi 144
+# Primary: HiDPI:144DPI;
+export MAIN_DPI=144
+export PRIMARY_MONITOR=$(xrandr -q | grep primary | awk '{print $1}')
+xrandr --output $PRIMARY_MONITOR --dpi $MAIN_DPI --scale 1x1
 
 # GDK app scale
 export GDK_DPI_SCALE=1.5
@@ -22,6 +24,23 @@ export GDK_DPI_SCALE=1.5
 # QT app theme and scale VARIANT (works well on dolphin and clementine)(optional | QT APP DEMAND)
 export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
 
+# Virtual desktop setting; Also multi monitor supplied
+bspc monitor $PRIMARY_MONITOR -d I II III IV V VI VII
+
+
+# Sencondary: normal DPI, check it statically
+SECONDARY_MONITOR='DP-2'
+MONITORS=$(xrandr -q | grep ' connected' | awk '{print $1}')
+if [[ $MONITORS == *$SECONDARY_MONITOR* ]]; then
+	export SECONDARY_MONITOR='DP-2'
+	xrandr --output $SECONDARY_MONITOR  --auto --scale 1.5x1.5 --fb 5760x1800 --pos 0x0
+	xrandr --output $PRIMARY_MONITOR --scale 1x1 --pos 2880x0
+	bspc monitor $SECONDARY_MONITOR -d VIII IX X
+fi
+
+#==============================
+#===== Auto start
+#==============================
 # Start compositer
 nohup picom -f >/dev/null 2>&1 &  # effct of fade
 
@@ -32,7 +51,7 @@ wal  -ste -lq -i $HOME/Pictures/Home_Slide
 sh $HOME/Scripts/wallblur.sh &>/dev/null &
 
 # Polybar; to make sure services already boot
-sh -c "sleep 3s $HOME/.config/polybar/launch.sh"
+sh -c "sleep 3s; $HOME/.config/polybar/launch.sh"
 
 # Message notifier
 /usr/bin/dunst &
@@ -52,9 +71,6 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 #========================================
 #===== Bspwm config
 #========================================
-# Virtual desktop setting; Also multi monitor supplied
-bspc monitor -d I II III IV V VI VII
-
 # Coloring
 bspc config active_border_color	 "#81a1c1"
 bspc config normal_border_color	 "#4c566a"

@@ -51,6 +51,8 @@ label-separator-foreground = ${colors.buffer}
 [module/bspwm]
 type = internal/bspwm
 
+pin-workspaces = true
+
 ws-icon-0 = I; 
 ws-icon-1 = II; 
 ws-icon-2 = III; 
@@ -58,6 +60,9 @@ ws-icon-3 = IV;
 ws-icon-4 = V; 
 ws-icon-5 = VI; 
 ws-icon-6 = VII;
+ws-icon-7 = VIII; 
+ws-icon-8 = IX; 
+ws-icon-9 = X; 
 
 label-focused = %icon%
 label-focused-underline = ${colors.nord7}
@@ -323,7 +328,8 @@ type = custom/script
 exec = ~/.config/polybar/scripts/clash.sh
 interval = 1200
 
-click-left = ~/.config/polybar/scripts/clash.sh toggle
+click-left= ~/.config/polybar/scripts/clash.sh
+click-right= ~/.config/polybar/scripts/clash.sh toggle
 
 [module/onedrive-widget]
 type = custom/script

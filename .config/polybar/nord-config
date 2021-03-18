@@ -2,7 +2,7 @@
 
 [config]
 # DPI value for HiDPI screen
-dpi = 144
+dpi = ${env:DPI:144}
 monitor = ${env:MONITOR:eDP-1}
 
 # bar position, apply globally
