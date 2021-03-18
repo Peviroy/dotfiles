@@ -36,6 +36,7 @@ if [[ $MONITORS == *$SECONDARY_MONITOR* ]]; then
 	xrandr --output $SECONDARY_MONITOR  --auto --scale 1.5x1.5 --fb 5760x1800 --pos 0x0
 	xrandr --output $PRIMARY_MONITOR --scale 1x1 --pos 2880x0
 	bspc monitor $SECONDARY_MONITOR -d VIII IX X
+	bspc monitor $PRIMARY_MONITOR -s $SECONDARY_MONITOR
 fi
 
 #==============================
