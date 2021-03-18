@@ -1,0 +1,11 @@
+#!/bin/sh
+# Xsetup: allow only primary monitor to show login dialog
+
+PRIMARY_MONITOR=$( xrandr -q | grep -w primary | awk '{print $1}' )
+MONITORS=$( xrandr -q | grep -w connected | awk '{print $1}' )
+
+for monitor in $MONITORS; do
+	if [ $monitor != $PRIMARY_MONITOR ]; then
+		xrandr --output $monitor --off
+	fi
+done
