@@ -326,16 +326,15 @@ ramp-signal-3-underline = ${colors.success}
 type = custom/script
 
 exec = ~/.config/polybar/scripts/clash.sh
-interval = 1200
+interval = 120
 
-click-left= ~/.config/polybar/scripts/clash.sh
 click-right= ~/.config/polybar/scripts/clash.sh toggle
 
 [module/onedrive-widget]
 type = custom/script
 
 exec = ~/.config/polybar/scripts/onedrive.sh
-interval = 60
+interval = 120
 
 click-left = ~/.config/polybar/scripts/onedrive.sh toggle
 
@@ -360,7 +359,7 @@ click-right = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggl
 [module/updates-pacman-aurhelper]
 type = custom/script
 exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
-interval = 3600
+interval = 600
 
 click-left = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
 
