@@ -46,7 +46,7 @@ source $HOME/.config/nvim/_machine_specific.vim
 " === System
 " ===
 " Guarantee privilege to exucute commands in VIMRC, and limit it
-set exrc   
+set exrc
 set secure
 
 " Prevent incorrect background rendering
@@ -76,7 +76,7 @@ set cursorline
 set hidden	"buffer
 set scrolloff=4		"lines above or below cursor line
 set viewoptions=cursor,folds,slash,unix
-set colorcolumn=120		" ruler at 100th column
+set colorcolumn=100		" ruler at 100th column
 set virtualedit=block "wholy rectangular area in visual block mode
 
 " Better tab
@@ -278,6 +278,7 @@ noremap <LEADER>u <C-w>k
 noremap <LEADER>e <C-w>j
 noremap <LEADER>n <C-w>h
 noremap <LEADER>i <C-w>l
+noremap qf <C-w>o
 
 " Disable the default s key
 noremap s <nop>
