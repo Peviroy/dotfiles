@@ -36,12 +36,13 @@ if [[ $MONITORS == *$SECONDARY_MONITOR* ]]; then
 	xrandr --output $SECONDARY_MONITOR  --auto --scale 1.5x1.5 --fb 5760x1800 --pos 0x0
 	xrandr --output $PRIMARY_MONITOR --scale 1x1 --pos 2880x0
 	bspc monitor $SECONDARY_MONITOR -d VIII IX X
+	# Bspwm automatically make the order from left to right, form top to down.
+	# In my case, primary monitor lay at the right, so the order will be I II III for $SECONDARY, while IV ... X for $PRIMARY
+	# To change that, execute command below once.
+	# TODO: currently, everytime after monitors suspend, the command below must be executed once more.
+	bspc monitor $PRIMARY_MONITOR -s $SECONDARY_MONITOR
 fi
 
-# Bspwm automatically make the order from left to right, form top to down.
-# In my case, primary monitor lay at the right, so the order will be I II III for $SECONDARY, while IV ... X for $PRIMARY
-# To change that, execute command below once.
-# bspc monitor $PRIMARY_MONITOR -s $SECONDARY_MONITOR
 #==============================
 #===== Auto start
 #==============================
