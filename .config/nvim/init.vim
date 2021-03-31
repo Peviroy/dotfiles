@@ -429,8 +429,9 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
-Plug 'theniceboy/nvim-deus'
 Plug 'arcticicestudio/nord-vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'ajmwagar/vim-deus'
 
 " Status line
 Plug 'ojroques/vim-scrollstatus'
@@ -613,27 +614,38 @@ set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "set background=dark
 "let ayucolor="mirage"
-"color deus
 "let ayucolor="light"
 "set background=light
+"
+" set background=dark    " Setting dark mode
 
 """ Nord
-colorscheme nord
+" Place custom option before call colorscheme
 let g:nord_cursor_line_number_background = 1
 let g:nord_uniform_status_lines = 1
-let g:nord_bold_vertical_split_line = 1
-let g:nord_uniform_diff_background = 1
+let g:nord_bold_vertical_split_line = 0
+let g:nord_uniform_diff_background = 0
+let g:nord_bold = 1
 let g:nord_underline = 1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
+colorscheme nord
 
-hi NonText ctermfg=gray guifg=grey10
-"hi SpecialKey ctermfg=blue guifg=grey70
+""" Purify
+syntax on
+let g:purify_italic = 0      " default: 1
+let g:purify_underline = 0   " default: 1
+let g:purify_undercurl = 0   " default: 1
+"colorscheme purify
+
+""" Desu
+let g:deus_termcolors=256
 
 " Status bar
 let g:airline_extensions = []
 let g:airline_powerline_fonts = 0
 let g:airline_highlighting_cache = 1
+let g:airline_theme='base16_nord'
 " ===================== Start of Plugin Settings =====================
 " ==
 " == GitGutter
