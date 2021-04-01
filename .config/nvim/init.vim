@@ -430,6 +430,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'arcticicestudio/nord-vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'ajmwagar/vim-deus'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Status line
 Plug 'ojroques/vim-scrollstatus'
@@ -1292,13 +1293,18 @@ let g:vmt_fence_closing_text = '/TOC'
 " ===
 " === rnvimr
 " ===
+" Note: rnvimr share settings with the global ranger, but plugin file dont.
+" So e.g.if ranger-devicons cannot show, just cp global ranger's devicons to
+" the rnvimr/ranger/plugins
+
 let g:rnvimr_ex_enable = 1
 let g:rnvimr_pick_enable = 1
 let g:rnvimr_draw_border = 1
 " let g:rnvimr_bw_enable = 1
 highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-" Since that rnvimr will open a file in new window via <CR>, which in default 
+
+" Note: Since that rnvimr will open a file in new window via <CR>, which in default 
 " will leave emtpy lines below, its recommended to use <C-t> to open file in the existing window.
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
