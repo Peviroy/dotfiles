@@ -135,8 +135,6 @@ fi
 
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
