@@ -80,8 +80,8 @@
 	"yank.enableCompletion": false,
 	"typescript.suggestionActions.enabled": true,
 	"typescript.format.enabled": true,
-	"explorer.width": 38,
-	"explorer.quitOnOpen": true,
+	"explorer.width": 28,
+	"explorer.quitOnOpen": false,
 	"explorer.sources": [
 		{
 			"name": "buffer",
@@ -105,11 +105,11 @@
 		"<tab>": "actionMenu",
 		"gl": "expandRecursive",
 		"gh": "collapseRecursive",
-		"i": "open",
-		"<cr>": "open",
-		"I": "openInVsplit",
-		"o": "expand",
-		"O": "openInTab",
+		"i": ["wait", "expandable?", "expand", "open"],
+		"<cr>": ["wait", "expandable?", "cd", "open"],
+		"I": "open:vsplit",
+		"o": ["wait", "expanded?", "collapse", "expand"],
+		"O": "open:tab",
 		"n": "collapse",
 		"l": "gotoParent",
 		"yp": "copyFilepath",
@@ -153,8 +153,11 @@
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
 		"--style",
-		"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+		"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1, column_limit: 100}"
 	],
+	"python.analysis.diagnosticSeverityOverrides": {
+      "reportGeneralTypeIssues": "none"
+  },
 	"html.format.enable": true,
 	"javascript.referencesCodeLens.enable": true,
 	"javascript.showUnused": true,
