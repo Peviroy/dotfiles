@@ -573,7 +573,7 @@ Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " Mini Vim-APP
 "Plug 'jceb/vim-orgmode'
-"Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 
@@ -974,8 +974,9 @@ let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
-\   "variable": "\uf71b",
+\   "variable": "\uf52a",
 \  }
+" let g:vista_ignore_kinds = ['Variable']
 " function! NearestMethodOrFunction() abort
 " 	return get(b:, 'vista_nearest_method_or_function', '')
 " endfunction
