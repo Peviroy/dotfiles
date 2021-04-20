@@ -37,7 +37,7 @@ get_duration() {
 
 # See README for configuring KEY and CITY with your own
 KEY="7d854a62817e8280f2c4b6f6e29450f2"
-CITY="Wenzhou"
+CITY="Beijing"
 UNITS="metric"
 SYMBOL="°"
 
