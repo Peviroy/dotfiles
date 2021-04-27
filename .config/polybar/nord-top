@@ -137,6 +137,7 @@ battery = ${config.battery-bat}
 adapter = ${config.battery-adp}
 
 format-charging = <animation-charging> <label-charging>
+format-charging-foreground = ${colors.success}
 format-charging-underline = ${colors.foreground}
 animation-charging-0 = 
 animation-charging-1 = 
