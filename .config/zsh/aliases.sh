@@ -19,7 +19,9 @@ alias t='trans'
 alias te='trans zh:en'
 alias tz='trans en:zh'
 
-alias la='ls -a'
+alias ls="exa -lgh --icons --group-directories-first"
+alias la="exa -lgha --icons --group-directories-first"
+alias tree="exa --tree --icons -L 2 ."
 
 alias vi='vim'
 alias nv='nvim'
@@ -30,8 +32,8 @@ alias dv='conda deactivate'
 alias sudo='sudo -E' # preverse-env
 alias sra='sudo -E ranger'
 
-alias bat='sudo tlp bat'
-alias ac='sudo tlp ac'
+alias tbat='sudo tlp bat'
+alias tac='sudo tlp ac'
 
 alias p='proxychains'
 
