@@ -6,16 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Start configuration added by Zim install {{{
-
-
-
-
-#=================================================
-# User configuration sourced by interactive shells
-#=================================================
-# Make .profile to store shared settings of both zsh and bash
-[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
-
 # Change default vi-keybindings
 source $HOME/.config/zsh/vi.zsh
 
@@ -155,3 +145,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# ------------------------------------------------
+# User configuration sourced by interactive shells
+# ------------------------------------------------
+# Make .profile to store shared settings of both zsh and bash
+[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
