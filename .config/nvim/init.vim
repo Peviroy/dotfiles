@@ -76,7 +76,6 @@ set cursorline
 set hidden	"buffer
 set scrolloff=4		"lines above or below cursor line
 set viewoptions=cursor,folds,slash,unix
-set colorcolumn=100		" ruler at 100th column
 set virtualedit=block "wholy rectangular area in visual block mode
 
 " Better tab
