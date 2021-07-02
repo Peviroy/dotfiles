@@ -26,7 +26,7 @@ bluetooth_print() {
 
             printf '\n'
         else
-            echo '%s' "%{F#435C75} "
+            printf '%s' "%{F#435C75} "
         fi
     done
 }
