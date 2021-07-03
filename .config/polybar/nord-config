@@ -7,7 +7,7 @@ monitor = ${env:MONITOR:eDP-1}
 
 # bar position, apply globally
 width = 100%
-height = 3%
+height = 2.6%
 offset-x = 0
 offset-y = 0
 radius = 11
@@ -28,7 +28,7 @@ font-5 = "JetBrainsMono Nerd Font:size=16;5"
 # for Chinese font
 font-6 = "GlowSansSC Normal Book:size=12"
 # for weather icon
-font-7 = Weather Icons:style=Regular:size=12;1
+font-7 = "Weather Icons:style=Regular:size=12;1"
 
 # module list:
 # alsa: Display current volume
