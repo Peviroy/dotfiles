@@ -293,35 +293,46 @@ content-padding = 1
 
 click-left = ${config.notify-click-left}
 
-[module/network-short]
+[module/network-wlan]
 type = internal/network
-interface = ${config.interface}
-
+interface = ${config.wlaninterface}
 interval = 1
 
-format-connected = %{A1:networkmanager_dmenu:}<ramp-signal>%{A}
-format-disconnected = %{A1:networkmanager_dmenu:}<label-disconnected>%{A}
-
-label-disconnected = 
-label-disconnected-foreground = ${colors.urgent}
+format-connected = <ramp-signal>
+format-disconnected = <label-disconnected>
 
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
-
 ramp-signal-0-foreground = ${colors.urgent}
 ramp-signal-0-underline = ${colors.urgent}
-
 ramp-signal-1-foreground = ${colors.notify}
 ramp-signal-1-underline = ${colors.notify}
-
 ramp-signal-2-foreground = ${colors.nord7}
 ramp-signal-2-underline = ${colors.nord7}
-
 ramp-signal-3-foreground = ${colors.success}
 ramp-signal-3-underline = ${colors.success}
 
+label-disconnected = ""
+label-disconnected-foreground = ${colors.urgent}
+label-disconnected-underline = ${colors.urgent}
+
+[module/network-wired]
+type = internal/network
+interface = ${config.wiredinterface}
+interval = 1
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = ∞︁
+label-connected-foreground = ${colors.success}
+label-connected-underline = ${colors.success}
+
+label-disconnected = ""
+label-disconnected-foreground = ${colors.urgent}
+label-disconnected-underline = ${colors.urgent}
 
 [module/clash-widget]
 type = custom/script

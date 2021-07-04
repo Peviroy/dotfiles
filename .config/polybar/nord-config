@@ -59,7 +59,7 @@ font-7 = "Weather Icons:style=Regular:size=12;1"
 # Top modules
 top-left = launcher title
 top-center = bspwm
-top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget system-bluetooth-bluetoothctl pulseaudio-control backlight network-short battery date
+top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget system-bluetooth-bluetoothctl pulseaudio-control backlight network-wlan network-wired battery date
 
 # Bottom modules
 bottom-left = powermenu info-hackspeed weather
@@ -80,7 +80,8 @@ line-size = 6
 # if some of them doesn't suit your environment, you can change
 # it from here.
 # network interface, check by `ip link show`
-interface = wlan0
+wlaninterface = wlan0
+wiredinterface = enp0s13f0u2u4
 
 # when the current battery capacity excess this value,
 # the full-capacity format will be displayed.
