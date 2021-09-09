@@ -587,6 +587,7 @@ Plug 'luochen1990/rainbow'
 " Plug 'mg979/vim-xtabline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'wincent/terminus'
+Plug 'rlue/vim-barbaric'
 
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
@@ -606,6 +607,41 @@ set re=0
 " experimental
 set lazyredraw
 "set regexpengine=1
+
+
+
+" ===
+" === Startify
+" ===
+"""
+let g:startify_fortune_use_unicode = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_session_persistence = 1
+let g:startify_session_autoload = 1
+let g:startify_session_sort = 1
+let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   Files']            },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ ]
+let g:startify_custom_header = [
+			\ ' _______    _______  ___      ___  __      _______     ______  ___  ___     ',
+			\ '|   __ "\  /"     "||"  \    /"  ||" \    /"      \   /    " \|"  \/"  |    ',
+			\ '(. |__) :)(: ______) \   \  //  / ||  |  |:        | // ____  \\   \  /     ',
+			\ '|:  ____/  \/    |    \\  \/. ./  |:  |  |_____/   )/  /    ) :)\\  \/      ',
+			\ '(|  /      // ___)_    \.    //   |.  |   //      /(: (____/ // /   /       ',
+			\ '|__/ \    (:      "|    \\   /    /\  |\ |:  __   \ \        / /   /        ',
+			\ '(.____)    \_______)     \__/    (__\_|_)|__|  \___) \"_____/ |___/         ',
+			\ '',
+			\ ' _______     __        _______   __   ___                                   ',
+			\ '|   __ "\   /""\      /"      \ |/"| /  ")																	',
+			\ '(. |__) :) /    \    |:        |(: |/   /                                   ',
+			\ "|:  ____/ /' /\  \   |_____/   )|    __/                                    ",
+			\ "(|  /    //  __'  \   //      / (// _  \                                    ",
+			\ '|__/ \  /   /  \\  \ |:  __   \ |: | \  \                                   ',
+			\ '(.____)(___/    \___)|__|  \___)(__|  \__)                                  ',
+			\ ]
+
 
 
 " ===
