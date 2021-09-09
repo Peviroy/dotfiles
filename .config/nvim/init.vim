@@ -165,7 +165,6 @@ noremap ; :
 
 " Save & quit
 noremap Q :q<CR>
-noremap <C-q> :qa<CR>
 noremap S :w<CR>
 
 " Open the vimrc file anytime
@@ -187,6 +186,9 @@ vnoremap Y "+y
 " Indentation
 nnoremap < <<
 nnoremap > >>
+
+" Delete find pair
+nnoremap dy d%
 
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
@@ -312,6 +314,8 @@ noremap <LEADER>q <C-w>j:q<CR>
 " ===
 " Create a new tab with tu
 noremap tu :tabe<CR>
+noremap tU :tab split<CR>
+
 " Move around tabs with tn and ti
 noremap tn :-tabnext<CR>
 noremap ti :+tabnext<CR>
@@ -336,7 +340,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " Opening a terminal window
-noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+noremap <LEADER>/ :set splitright<CR>:vsplit<CR>:vertical res -21<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -469,7 +473,6 @@ Plug 'mbbill/undotree'
 
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
@@ -581,7 +584,7 @@ Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
 Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
+" Plug 'mg979/vim-xtabline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'wincent/terminus'
 
@@ -595,7 +598,7 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'kana/vim-textobj-user'
 " Plug 'roxma/nvim-yarp'
-
+"
 
 call plug#end()
 set re=0
@@ -984,10 +987,6 @@ let g:vista#renderer#icons = {
 
 let g:scrollstatus_size = 15
 
-" ===
-" === fzf-gitignore
-" ===
-noremap <LEADER>gi :FzfGitignore<CR>
 
 
 " ===
@@ -1212,12 +1211,12 @@ let g:rainbow_active = 1
 " ===
 " === xtabline
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.last_open_first = 1
-noremap to :XTabCycleMode<CR>
+" let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+" let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.last_open_first = 1
+" noremap to :XTabCycleMode<CR>
 noremap \p :echo expand('%:p')<CR>
 
 
