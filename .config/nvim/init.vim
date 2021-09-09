@@ -434,6 +434,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'ajmwagar/vim-deus'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'sainnhe/sonokai'
 
 " Status line
 Plug 'ojroques/vim-scrollstatus'
@@ -666,23 +667,37 @@ let g:nord_bold = 1
 let g:nord_underline = 1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
-colorscheme nord
 
 """ Purify
 syntax on
 let g:purify_italic = 0      " default: 1
 let g:purify_underline = 0   " default: 1
 let g:purify_undercurl = 0   " default: 1
-"colorscheme purify
 
-""" Desu
-let g:deus_termcolors=256
+""" Sonokai
+" Important!!
+if has('termguicolors')
+	set termguicolors
+endif
+" The configuration options should be placed before `colorscheme sonokai`.
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+let g:sonokai_better_performance = 1
 
-" Status bar
-let g:airline_extensions = []
-let g:airline_powerline_fonts = 0
+""" Status bar
+let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
-let g:airline_theme='base16_nord'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#alt_sep = 0
+let g:airline#extensions#tabline#show_close_button = 0
+
+""" Set themes
+colorscheme sonokai
+let g:airline_theme = 'sonokai'
+
+
+
 " ===================== Start of Plugin Settings =====================
 " ==
 " == GitGutter
