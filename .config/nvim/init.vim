@@ -478,6 +478,7 @@ Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
+Plug 'rhysd/git-messenger.vim'
 
 " Autoformat
 Plug 'google/vim-maktaba'
@@ -718,6 +719,28 @@ nnoremap <LEADER>gf :GitGutterFold<CR>
 nnoremap H :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+
+" ==
+" == GitMessenger
+" ==
+nnoremap <LEADER>gm <Plug>(git-messenger)
+function! s:setup_git_messenger_popup() abort
+    " Your favorite configuration here
+    " For example, set go back/forward history to <C-o>/<C-i>
+		" q 	Close the popup window
+		" o 	older. Back to older commit at the line
+		" O 	Opposite to o. Forward to newer commit at the line
+		" d 	Toggle unified diff hunks only in current file of the commit
+		" D 	Toggle all unified diff hunks of the commit
+		" r 	Toggle word diff hunks only in current file of the commit
+		" R 	Toggle all word diff hunks of current commit
+		" ? 	Show mappings help
+endfunction
+autocmd FileType gitmessengerpopup call <SID>setup_git_messenger_popup()
+hi link gitmessengerEmail Comment
+let g:git_messenger_floating_win_opts = { 'border': 'single' }
+let g:git_messenger_popup_content_margins = v:false
+let g:git_messenger_always_into_popup = v:true
 
 
 " ===
