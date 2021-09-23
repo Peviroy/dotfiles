@@ -43,6 +43,10 @@ super + alt + c
 super + alt + v
 	bash -c "xsel -ib < $HOME/.config/.passwd"
 
+# disable csdn when searching.
+super + alt + d
+	bash -c "echo '-\"blog.csdn.net\"' | xsel -ib"
+
 # screenshot
 super + Delete
   flameshot gui
