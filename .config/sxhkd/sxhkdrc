@@ -17,7 +17,7 @@ super + Return
 
 # powerful launcher! open in monitor with focused window
 ctrl + @space
-  rofi -modi file-browser,run,ssh,combi -combi-modi drun,window -show combi -m -4
+  rofi -modi filebrowser,run,ssh,combi -combi-modi drun,window -show combi -m -4
 
 # make sxhkd reload its configuration files:
 super + Escape
