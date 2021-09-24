@@ -8,9 +8,9 @@ configuration {
 	display-run:     " cmd";
 	display-window:  " node";
 	display-ssh:	   " ssh";
-  display-file-browser: " brow";
+  display-filebrowser: " brow";
   /* use combi mode to combine drun&window*/
-  display-combi:   ".. ";
+  display-combi:   "  ";
 
 	show-icons:true;
   font: "FiraCode Regular 14";
@@ -20,7 +20,6 @@ configuration {
   kb-row-up: "Alt+u";
   kb-row-down: "Alt+e";
   /* input selection */
-  kb-clear-line: "Control+l";
   kb-move-front: "Control+n";
   kb-move-end: "Control+i";
   kb-move-word-back: "Alt+b";
