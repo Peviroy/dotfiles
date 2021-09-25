@@ -7,8 +7,8 @@ After=iwd.service
 [Service]
 Type=simple
 EnvironmentFile=%h/.config/.clash_subscription
-Environment=CONFIG_YAML="%h/.config/clash/config.yaml"
-ExecStartPost=/bin/curl ${SUBSCRIPTION} -o ${CONFIG_YAML}
+Environment=CONFIG_YAML="%h/.config/clash/config.yaml" || /bin/curl ${SUBSCRIPTION} -o ${CONFIG_YAML}
+# ExecStartPost=/bin/curl ${SUBSCRIPTION} -o ${CONFIG_YAML}
 ExecStart=/usr/bin/clash
 Restart=on-abort
 
