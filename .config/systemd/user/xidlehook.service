@@ -6,7 +6,7 @@ After=graphical.target
 Type=simple
 Environment=DISPLAY=:0 PRIMARY_DISPLAY=eDP1
 ExecStartPre=/bin/sleep 30
-ExecStart=/usr/bin/xidlehook --not-when-fullscreen --not-when-audio --timer 300 '/bin/xrandr --output $PRIMARY_DISPLAY --brightness .5' '/bin/xrandr --output $PRIMARY_DISPLAY --brightness 1' --timer 60  '/bin/xrandr --output $PRIMARY_DISPLAY --brightness 1; /usr/bin/betterlockscreen -l dim' '' --timer 1800 'systemctl suspend' ''
+ExecStart=/usr/bin/xidlehook --not-when-fullscreen --not-when-audio --timer 300 '/bin/xrandr --output $PRIMARY_DISPLAY --brightness .5' '/bin/xrandr --output $PRIMARY_DISPLAY --brightness 1' --timer 60  '/bin/xrandr --output $PRIMARY_DISPLAY --brightness 1; /usr/bin/betterlockscreen -l dim --off 60' '' --timer 18000 'systemctl suspend' ''
 
 [Install]
 WantedBy=default.target
