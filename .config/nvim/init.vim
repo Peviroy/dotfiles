@@ -57,6 +57,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "set clipboard=unnamedplus
 set autochdir
 set encoding=utf-8
+set fileencoding=utf-8
 set formatoptions-=tc		"dont autowrap text and comments that using textwidth
 set shortmess+=c
 set inccommand=split	"display the effcts of command
@@ -458,11 +459,10 @@ Plug 'pechorin/any-jump.vim'
 Plug 'liuchengxu/vista.vim'
 
 " Debugger
-" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
 Plug 'wellle/tmux-complete.vim'
 
 " Snippets
@@ -601,7 +601,8 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'kana/vim-textobj-user'
 " Plug 'roxma/nvim-yarp'
-"
+
+Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 set re=0
@@ -1345,6 +1346,7 @@ sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'vscode-node-debug2' ]
 
 " ===
 " === reply.vim
@@ -1415,12 +1417,6 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 " ===
 let g:rooter_patterns = ['__vim_project_root', '.git/']
 let g:rooter_silent_chdir = 1
-
-
-" ===
-" === AsyncRun
-" ===
-noremap gp :AsyncRun git push<CR>
 
 
 " ===
@@ -1499,6 +1495,8 @@ let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " cust
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
 
+
+autocmd BufWritePre *.py execute ':Black'
 " ===================== End of Plugin Settings =====================
 
 
