@@ -19,7 +19,7 @@ export PRIMARY_MONITOR=$(xrandr -q | grep primary | awk '{print $1}')
 xrandr --output $PRIMARY_MONITOR --dpi $MAIN_DPI --scale 1x1
 
 # GDK app scale
-export GDK_DPI_SCALE=1.5
+export GDK_DPI_SCALE=1
 
 # QT app theme and scale VARIANT (works well on dolphin and clementine)(optional | QT APP DEMAND)
 export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
@@ -31,15 +31,17 @@ bspc monitor $PRIMARY_MONITOR -d I II III IV V VI VII
 # Sencondary: normal DPI, check it statically;
 OTHER_MONITORS=$(xrandr -q | grep ' connected' | awk '{print $1}' | grep -v ${PRIMARY_MONITOR} | wc -l)
 if [[ $OTHER_MONITORS == 1 ]]; then
+	export MAIN_DPI=96
 	export SECONDARY_MONITOR=$(xrandr -q | grep ' connected' | awk '{print $1}' | grep -v ${PRIMARY_MONITOR})
-	xrandr --output $SECONDARY_MONITOR  --mode 1920x1080 --scale 1.5x1.5 --fb 5760x1800 --pos 0x0
-	xrandr --output $PRIMARY_MONITOR --scale 1x1 --pos 2880x0
-	bspc monitor $SECONDARY_MONITOR -d VIII IX X
+	#xrandr --output DP2 --mode 1920x1080 --scale 1.5x1.5 --fb 5760x1800 --pos 2880x0; xrandr --output $PRIMARY_MONITOR --pos 0x0
+	xrandr --output $SECONDARY_MONITOR  --mode 3840x2160 --fb 6720x2160 --pos 0x0 --dpi $MAIN_DPI
+	xrandr --output $PRIMARY_MONITOR --scale 1x1 --pos 3840x0 --dpi $MAIN_DPI
+	bspc monitor $PRIMARY_MONITOR -d VIII IX X
+	bspc monitor $SECONDARY_MONITOR -d I II III IV V VI VII
 	# Bspwm automatically make the order from left to right, form top to down.
-	# In my case, primary monitor lay at the right, so the order will be I II III for $SECONDARY, while IV ... X for $PRIMARY
+	# In my case, primary monitor lay at the right, so the default order will be I II III for $SECONDARY, while IV ... X for $PRIMARY
 	# To change that, execute command below once.
-	# TODO: currently, everytime after monitors suspend, the command below must be executed once more.
-	bspc monitor $PRIMARY_MONITOR -s $SECONDARY_MONITOR
+	#bspc wm -O $SECONDARY_MONITOR $PRIMARY_MONITOR
 fi
 
 #==============================
