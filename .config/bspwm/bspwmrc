@@ -119,7 +119,6 @@ bspc rule -a St:st:nvim desktop='^3'          follow=on focus=on locked=on
 
 # Workspace 4 (Reading and Text-editors)
 bspc rule -a Typora desktop='^4'              follow=on focus=on locked=on
-bspc rule -a Zathura desktop='^4' state=tiled follow=on focus=on
 
 # Workspace 5 (Sysinfo, MC and anythingelse)
 bspc rule -a St:st:btm desktop='^5'           follow=on focus=on
@@ -132,3 +131,5 @@ bspc rule -a vlc desktop='^6'                 follow=on focus=on
 
 # Others
 bspc rule -a Screenkey manage=off
+bspc rule -a Zathura												 state=tiled
+bspc rule -a N/A manage=off
