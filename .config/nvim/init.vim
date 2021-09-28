@@ -480,6 +480,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'rhysd/git-messenger.vim'
+Plug 'APZelos/blamer.nvim'
 
 " Autoformat
 Plug 'google/vim-maktaba'
@@ -744,6 +745,14 @@ let g:git_messenger_floating_win_opts = { 'border': 'single' }
 let g:git_messenger_popup_content_margins = v:false
 let g:git_messenger_always_into_popup = v:true
 
+" ===
+" === blamer
+" ===
+let g:blamer_enabled = 1
+let g:blamer_prefix = ' > '
+"let g:blamer_date_format = '%d/%m/%y'
+let g:blamer_relative_time = 1
+let g:blamer_delay = 500
 
 " ===
 " === coc.nvim
