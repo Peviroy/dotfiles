@@ -487,7 +487,7 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 
 " Tex
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
 " CSharp
 Plug 'OmniSharp/omnisharp-vim'
@@ -851,7 +851,6 @@ imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'David Chen'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
-
 " ===
 " === vim-instant-markdown
 " ===
@@ -1074,7 +1073,6 @@ let g:scrollstatus_size = 15
 " ===
 " === Ultisnips
 " ===
-" let g:tex_flavor = "latex"
 " inoremap <c-n> <nop>
 " let g:UltiSnipsExpandTrigger="<c-e>"
 " let g:UltiSnipsJumpForwardTrigger="<c-e>"
@@ -1092,12 +1090,19 @@ let g:scrollstatus_size = 15
 " ===
 " === vimtex
 " ===
-"let g:vimtex_view_method = ''
-let g:vimtex_view_general_viewer = 'llpp'
-let g:vimtex_mappings_enabled = 0
-let g:vimtex_text_obj_enabled = 0
-let g:vimtex_motion_enabled = 0
 let maplocalleader=' '
+let g:tex_flavor = "latex"
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_quickfix_mode = 0
+let g:vimtex_toc_config = {
+\ 'name' : 'TOC',
+\ 'layers' : ['content', 'todo', 'include'],
+\ 'split_width' : 25,
+\ 'todo_sorted' : 0,
+\ 'show_help' : 1,
+\ 'show_numbers' : 1,
+\}
 
 
 " ===
