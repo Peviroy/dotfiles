@@ -267,8 +267,8 @@ cnoremap <M-w> <S-Right>
 " ===
 " === Searching
 " ===
-noremap - N
-noremap = n
+noremap - n
+noremap = N
 
 
 " ===
@@ -1103,6 +1103,28 @@ let g:vimtex_toc_config = {
 \ 'show_help' : 1,
 \ 'show_numbers' : 1,
 \}
+
+" Conceal Setting
+let g:tex_conceal = 'abdmg'
+nnoremap <f1> :call SetupSplits()<cr>
+nnoremap <f2> :call Restore()<cr>
+
+function! SetupSplits() abort
+	vsplit
+  set conceallevel=2
+  set scrollbind
+  wincmd w
+  set conceallevel=0
+  set scrollbind
+  syncbind
+endfunction
+
+function! Restore() abort " {{{1
+	set conceallevel=1
+	set concealcursor=""
+  set noscrollbind
+endfunction
+
 
 
 " ===
