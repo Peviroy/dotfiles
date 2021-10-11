@@ -1530,6 +1530,43 @@ let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
 
 autocmd BufWritePre *.py execute ':Black'
+
+
+" ===
+" === nvui settings
+" ===
+if exists('g:nvui')
+  let g:NvuiScrollAnimationDuration = 0.15
+	let g:NvuiCursorAnimationDuration = 0.15
+
+	" === Font Settings
+	let g:fnt_types = ['FantasqueSansMono\ Nerd\ Font\ Mono', 'JetBrainsMono\ Nerd\ Font\ Mono']
+	let g:fnt_index = 0
+	let g:fnt_size = 16
+
+	function! ResetFont()
+		let local_fnt_size = g:fnt_size
+		if g:fnt_index == 0
+			let local_fnt_size += 3 " Fantasque shows smaller than normal
+		endif
+		execute ':set guifont=' . g:fnt_types[g:fnt_index] . ':h' . string(local_fnt_size) . ',Glow\ Sans\ SC\ Normal\ Book'
+	endfunction
+
+	call ResetFont()
+
+	function! CycleFont()
+		let g:fnt_index = (g:fnt_index + 1)  % len(g:fnt_types)
+		call ResetFont()
+	endfunction
+
+	function! SetFontSize(fontsize)
+		if a:fontsize
+			let g:fnt_size = a:fontsize
+			call ResetFont()
+		endif
+	endfunction
+endif
+
 " ===================== End of Plugin Settings =====================
 
 
