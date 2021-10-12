@@ -76,6 +76,16 @@ check_wallpaper_changed() {
 	fi
 }
 
+check_charging() {
+	#mode=`acpi -b | awk 'NR==2{print $3}' | sed 's/,//g'`
+	mode=`acpi -b | grep -oh '\w*Discharging\w*' | sed 's/,//g'`
+	if [[ $mode == "Discharging" ]]; then
+		return 1
+	else
+		return 0 # true
+	fi
+}
+
 clean_cache() {
 	if [  "$(ls -A "$cache_dir")" ]; then
 		err " * Cleaning existing cache"
@@ -120,6 +130,14 @@ prev_state="reset"
 while :; do
 
 	check_wallpaper_changed
+	check_charging
+	is_charging=$?
+	if [[ $is_charging == 1 ]]; then # discharging
+		err " ! Un-blurring"
+		do_unblur
+		sleep 60
+		continue
+	fi
 
 	current_workspace="$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')"
 	#err $current_workspace
@@ -142,5 +160,5 @@ while :; do
 		    	prev_state="unblurred"
 		fi
 	fi
-	sleep 0.3
+	sleep 1
 done
