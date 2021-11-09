@@ -449,8 +449,9 @@ Plug 'RRethy/vim-illuminate'
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
@@ -758,7 +759,6 @@ let g:coc_global_extensions = [
 	\ 'coc-lists',
 	\ 'coc-prettier',
 	\ 'coc-pyright',
-	\ 'coc-python',
 	\ 'coc-snippets',
 	\ 'coc-sourcekit',
 	\ 'coc-stylelint',
@@ -866,9 +866,6 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === FZF
 " ===
-set rtp+=/usr/local/opt/fzf
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-set rtp+=/home/david/.linuxbrew/opt/fzf
 nnoremap <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-f> :Rg<CR>
