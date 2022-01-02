@@ -46,14 +46,12 @@ font-7 = "Weather Icons:style=Regular:size=12;1"
 # network-detail: Download and upload speed 
 # weather: Display openweather info
 # powermenu: menu to control system power
-# info-hackspeed: Numper of characters clicked per minute
 # daily-poem: Display poem
 # temperature: Display internal temperature
 # memory: Display memory usage
 # cpu: Display cpu usage
 # show-desktop: Display desktop (i3 only)
 # clash-widget: showing clash service
-# onedrive-widget: showing onedrive service
 # clipmenu-widget: showing clipmenu service
 
 # Top modules
@@ -62,7 +60,7 @@ top-center = bspwm
 top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget system-bluetooth-bluetoothctl pulseaudio-control backlight network-wlan network-wired battery date
 
 # Bottom modules
-bottom-left = powermenu info-hackspeed weather
+bottom-left = powermenu weather
 bottom-center = daily-poem
 bottom-right = system-usb-udev
 

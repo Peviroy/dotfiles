@@ -128,12 +128,6 @@ ramp-2-foreground = ${colors.success}
 ramp-3-foreground = ${colors.success}
 ramp-4-foreground = ${colors.warning}
 
-[module/info-hackspeed]
-type = custom/script
-exec = ~/.config/polybar/scripts/info-hackspeed.sh
-format-prefix = " %{T6} %{T-}"
-tail = true
-
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
