@@ -73,9 +73,9 @@ label =  %notifications%
 type = custom/ipc
 
 # replace RTmlPODgbhzgKHKPIAo6t4CCmlHPHKLv with your token from https://v2.jinrishici.com/token.
-hook-0 = ~/.config/polybar/scripts/daily-poem require RTmlPODgbhzgKHKPIAo6t4CCmlHPHKLv ~/.config/polybar/scripts/poem.txt
-hook-1 = ~/.config/polybar/scripts/daily-poem get ~/.config/polybar/scripts/poem.txt plus
-hook-2 = ~/.config/polybar/scripts/daily-poem get ~/.config/polybar/scripts/poem.txt minus
+hook-0 = ~/.config/polybar/themes/nord/scripts/daily-poem require RTmlPODgbhzgKHKPIAo6t4CCmlHPHKLv ~/.config/polybar/themes/nord/scripts/poem.txt
+hook-1 = ~/.config/polybar/themes/nord/scripts/daily-poem get ~/.config/polybar/themes/nord/scripts/poem.txt plus
+hook-2 = ~/.config/polybar/themes/nord/scripts/daily-poem get ~/.config/polybar/themes/nord/scripts/poem.txt minus
 
 initial = 1
 
@@ -130,14 +130,14 @@ ramp-4-foreground = ${colors.warning}
 
 [module/weather]
 type = custom/script
-exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
+exec = ~/.config/polybar/themes/nord/scripts/openweathermap-fullfeatured.sh
 interval = 1800
 
 label-font = 8
 
 [module/system-usb-udev]
 type = custom/script
-exec = ~/.config/polybar/scripts/system-usb-udev.sh
+exec = ~/.config/polybar/themes/nord/scripts/system-usb-udev.sh
 tail = true
-click-left = ~/.config/polybar/scripts/system-usb-udev.sh --mount &
-click-right = ~/.config/polybar/scripts/system-usb-udev.sh --unmount &
+click-left = ~/.config/polybar/themes/nord/scripts/system-usb-udev.sh --mount &
+click-right = ~/.config/polybar/themes/nord/scripts/system-usb-udev.sh --unmount &
