@@ -54,7 +54,9 @@ nohup picom -f >/dev/null 2>&1 &  # effct of fade
 wal  -ste -lq -i $HOME/Pictures/Home_Slide
 
 # Blur desktop wallpaper when windows are open
-sh $HOME/Scripts/wallblur.sh &>/dev/null &
+# ! blurring the wallpaper is lagging on HiDPI monitor.
+# ! ibhagwan-picom's blurring is much faster.
+# sh $HOME/Scripts/wallblur.sh &>/dev/null &
 
 # Polybar; to make sure services already boot
 sh -c "sleep 3s; $HOME/.config/polybar/launch.sh"
