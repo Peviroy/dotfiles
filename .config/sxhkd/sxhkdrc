@@ -15,6 +15,10 @@
 super + Return
 	st
 
+# floating terminal emulator(coop. with bspwmrc)
+ctrl + alt + t
+	st -c 'float'
+
 # powerful launcher! open in monitor with focused window
 ctrl + @space
   rofi -modi filebrowser,run,ssh,combi -combi-modi drun,window -show combi -m -4
