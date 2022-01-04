@@ -74,7 +74,7 @@ nohup fcitx5 >/dev/null 2>&1 &
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Auto boost
-sh $HOME/Scripts/init_workspace.sh
+nohup sh $HOME/Scripts/init_workspace.sh &
 
 
 
