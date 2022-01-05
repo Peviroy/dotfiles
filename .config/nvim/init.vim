@@ -604,7 +604,6 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'kana/vim-textobj-user'
 " Plug 'roxma/nvim-yarp'
 
-Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 set re=0
@@ -1527,9 +1526,6 @@ let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
-
-
-autocmd BufWritePre *.py execute ':Black'
 
 
 " ===
