@@ -1,0 +1,91 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Use custom format
+format = " $directory $fill $all"
+
+# Wait 20 milliseconds for starship to check files under the current directory.
+scan_timeout = 20
+
+[fill]
+symbol = " "
+
+[character]
+error_symbol = "[✖](bold red) "
+vicmd_symbol = "[V](bold green) "
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true # truncate to the root of git repo.
+read_only = " "
+
+[cmd_duration]
+min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
+format = " took [$duration]($style)"
+
+[aws]
+symbol = "  "
+
+[conda]
+symbol = " "
+ignore_base = false
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "

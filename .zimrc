@@ -44,5 +44,3 @@ zmodule agkozak/zsh-z
 zmodule hlissner/zsh-autopair
 # replace search engine with fzf
 zmodule Aloxaf/fzf-tab
-# wonderful theme
-zmodule romkatv/powerlevel10k
