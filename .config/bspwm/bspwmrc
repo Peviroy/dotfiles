@@ -43,6 +43,8 @@ if [[ $OTHER_MONITORS == 1 ]]; then
 	#bspc wm -O $SECONDARY_MONITOR $PRIMARY_MONITOR
 fi
 
+enact --pos left --watch &
+
 #==============================
 #===== Auto start
 #==============================
@@ -80,6 +82,10 @@ nohup sh $HOME/Scripts/init_workspace.sh &
 #========================================
 #===== Bspwm config
 #========================================
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+
 # Coloring
 bspc config active_border_color  "#81a1c1"
 bspc config normal_border_color  "#6272a4"
@@ -128,3 +134,4 @@ bspc rule -a vlc desktop='^6'                 follow=on focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Zathura												 state=tiled
 bspc rule -a N/A manage=off
+bspc rule -a float:st												 state=floating
