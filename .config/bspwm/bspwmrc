@@ -27,7 +27,6 @@ export $(grep -v '^#' $HOME/.config/.decorate_qt_app | xargs -d '\n')
 # Virtual desktop setting; Also multi monitor supplied
 bspc monitor $PRIMARY_MONITOR -d I II III IV V VI VII
 
-
 # Sencondary: normal DPI, check it statically;
 OTHER_MONITORS=$(xrandr -q | grep ' connected' | awk '{print $1}' | grep -v ${PRIMARY_MONITOR} | wc -l)
 if [[ $OTHER_MONITORS == 1 ]]; then
@@ -82,19 +81,13 @@ nohup sh $HOME/Scripts/init_workspace.sh &
 #===== Bspwm config
 #========================================
 # Coloring
-bspc config active_border_color	 "#81a1c1"
-bspc config normal_border_color	 "#4c566a"
-bspc config focused_border_color "#b48ead"
+bspc config active_border_color  "#81a1c1"
+bspc config normal_border_color  "#6272a4"
+bspc config focused_border_color "#ffaf85"
 
-bspc config border_width         2
-bspc config window_gap           10
-
-# Padding config (Seems)
-#brpc config top_padding 36
-#bspc config left_padding 0
-#bspc config right_padding 0
-#bspc config bottom_padding 36
-
+# Border
+bspc config border_width         4
+bspc config window_gap           15
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
