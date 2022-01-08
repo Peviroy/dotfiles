@@ -4,8 +4,8 @@ GenericName=bottom
 Comment=A cross-platform graphical process/system monitor.
 
 TryExec=btm
-Exec=btm
-Terminal=true
+Exec=alacritty -e "btm"
+Terminal=false
 
 Icon=/usr/share/icons/Papirus-Dark/64x64/apps/kubrick.svg
 

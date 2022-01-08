@@ -3,7 +3,7 @@ Name=ranger
 GenericName=Ranger
 Comment=A cross-platform text-based file manager
 
-Exec=st -f "JetBrainsMono Nerd Font:pixelsize=28:antialias=true:autohint=true" -e "ranger"
+Exec=alacritty -e "ranger"
 Terminal=false
 
 Icon=/usr/share/icons/Papirus-Dark/64x64/apps/sk1.svg

@@ -4,7 +4,7 @@ GenericName=Text Editor
 GenericName[de]=Texteditor
 Comment=Edit text files
 
-Exec=st -f "JetBrainsMono Nerd Font:pixelsize=28:antialias=true:autohint=true" -e "nvim"
+Exec=alacritty -e "nvim"
 Terminal=false
 
 Icon=nvim

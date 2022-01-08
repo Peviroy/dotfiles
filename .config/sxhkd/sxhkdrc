@@ -13,11 +13,11 @@
 
 # terminal emulator
 super + Return
-	st
+	alacritty
 
 # floating terminal emulator(coop. with bspwmrc)
 ctrl + alt + t
-	st -c 'float'
+	alacritty --class Alacritty,float
 
 # powerful launcher! open in monitor with focused window
 ctrl + @space
