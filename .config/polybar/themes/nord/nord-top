@@ -337,10 +337,17 @@ label-disconnected-underline = ${colors.urgent}
 [module/clash-widget]
 type = custom/script
 
-exec = ~/.config/polybar/themes/nord/scripts/clash.sh
-interval = 120
+exec = ~/.config/polybar/themes/nord/scripts/clash-query.sh
+tail = true
 
-click-right= ~/.config/polybar/themes/nord/scripts/clash.sh toggle
+format = <label>
+format-prefix = 
+format-background = ${colors.success}
+format-padding = 1
+
+label = %output%
+
+click-right= ~/.config/polybar/themes/nord/scripts/clash-query.sh toggle
 
 [module/clipmenu-widget]
 type = custom/script
@@ -371,7 +378,7 @@ click-left = ~/.config/polybar/themes/nord/scripts/updates-pacman-aurhelper.sh
 [module/launcher]
 type=custom/text
 content =  |
- 
+
 content-font = 6
 content-foreground = #1793d1
 ;content-foreground=${colors.foreground}
