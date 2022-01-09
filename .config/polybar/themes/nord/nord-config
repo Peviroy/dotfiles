@@ -64,41 +64,32 @@ bottom-left = powermenu weather
 bottom-center = daily-poem
 bottom-right = system-usb-udev
 
+# -- System tray ---------------------
+systray-padding = 0
+systray-maxsize = 32
 systray-top = none
 systray-offset-x-top = 0
 systray-detached-top = true
 systray-bottom = right
 systray-offsex-x-bottom = -5
 systray-detached-bottom = true
-# global style
-line-size = 6
 
-# Modules configure option
-# the default value in this section should work in most cases,
-# if some of them doesn't suit your environment, you can change
-# it from here.
-# network interface, check by `ip link show`
-wlaninterface = wlan0
-wiredinterface = enp0s13f0u2u4
+# -- Module config -----------
+wlan-interface = wlan0
+wired-interface = enp0s13f0u2u4
 
-# when the current battery capacity excess this value,
-# the full-capacity format will be displayed.
 battery-full-at = 94
 
-# battery and adapter
+; $ ls -1 /sys/class/power_supply/
 battery-bat = BAT1
 battery-adp = ADP1
 
-# soundcard setting
 master-soundcard = default
 speaker-soundcard = default
 headphone-soundcard = default
 master-mixer = Master
 
-# mpd service connection setting
-mpd-host = 127.0.0.1
-mpd-port = 6600
-
+# Thermal zone to use
 thermal-zone = 3
 # Base temperature for where to start the ramp (in degrees celsius)
 base-temperature = 20
@@ -110,12 +101,3 @@ notify-click-left =
 
 # network module setting
 network-click-left = 
-
-# i3
-# Only show workspaces defined on the same output as the bar
-#
-# Useful if you want to show monitor specific workspaces
-# on different bars
-#
-# Default: false
-i3-pin-workspaces = false

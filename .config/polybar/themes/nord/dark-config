@@ -25,7 +25,6 @@ foreground = ${colors.foreground}
 
 line-size = ${config.line-size}
 
-padding = 0
 override-redirect = ${config.override-redirect}
 wm-restack = ${config.wm-restack}
 
@@ -38,9 +37,6 @@ font-5 = ${config.font-5}
 font-6 = ${config.font-6}
 font-7 = ${config.font-7}
 
-tray-padding = 0
-tray-detached = false
-tray-maxsize = 32
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -56,6 +52,8 @@ modules-left = ${config.top-left}
 modules-center = ${config.top-center}
 modules-right = ${config.top-right}
 
+tray-padding = ${config.systray-padding}
+tray-maxsize = ${config.systray-maxsize}
 tray-position = ${config.systray-top}
 tray-offset-x = ${config.systray-offsex-x-top}
 tray-detached = ${config.systray-detached-top}
@@ -71,6 +69,8 @@ modules-left = ${config.bottom-left}
 modules-center = ${config.bottom-center}
 modules-right = ${config.bottom-right}
 
+tray-padding = ${config.systray-padding}
+tray-maxsize = ${config.systray-maxsize}
 tray-position = ${config.systray-bottom}
 tray-offset-x = ${config.systray-offsex-x-bottom}
 tray-detached = ${config.systray-detached-bottom}

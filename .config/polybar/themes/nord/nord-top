@@ -295,7 +295,7 @@ click-left = ${config.notify-click-left}
 
 [module/network-wlan]
 type = internal/network
-interface = ${config.wlaninterface}
+interface = ${config.wlan-interface}
 interval = 1
 
 format-connected = <ramp-signal>
@@ -320,7 +320,7 @@ label-disconnected-underline = ${colors.urgent}
 
 [module/network-wired]
 type = internal/network
-interface = ${config.wiredinterface}
+interface = ${config.wired-interface}
 interval = 1
 
 format-connected = <label-connected>

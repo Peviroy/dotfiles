@@ -5,20 +5,25 @@ type = custom/menu
 expand-right = true
 
 label-open = 
-label-close =  |
+label-close =  |
+label-close-foreground = ${colors.foreground}
 
 menu-0-0 = 
 menu-0-0-foreground = ${colors.urgent}
 menu-0-0-padding = 1
-menu-0-0-exec = shutdown
+menu-0-0-exec = systemctl poweroff
 menu-0-1 = 
-menu-0-1-foreground = ${colors.warning}
+menu-0-1-foreground = ${colors.success}
 menu-0-1-padding = 1
-menu-0-1-exec = reboot
+menu-0-1-exec = systemctl reboot
 menu-0-2 = 
 menu-0-2-foreground = ${colors.warning}
 menu-0-2-padding = 1
-menu-0-2-exec = logout
+menu-0-2-exec = bspc quit
+# keep '|' if neccesary
+menu-0-3 = " |"
+menu-0-3-foreground = ${colors.warning}
+menu-0-3-exec = betterlockscreen -l dim
 
 [module/cpu]
 type = internal/cpu
