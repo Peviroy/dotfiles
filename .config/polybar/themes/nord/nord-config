@@ -1,36 +1,36 @@
 # vim:ft=dosini
 
 [config]
-# DPI value for HiDPI screen
-dpi = ${env:DPI:144}
+dpi = ${env:DPI:96}
 monitor = ${env:MONITOR:eDP-1}
 
-# bar position, apply globally
+# bar shape position, apply globally
 width = 100%
-height = 2.6%
+height = 43
 offset-x = 0
 offset-y = 0
 radius = 11
 padding-left = 2
 padding-right = 2
+line-size = 6
 
 fixed-center = true
 override-redirect = false
 wm-restack = bspwm
 
-font-0 = "Overpass:size=12"
-font-1 = FontAwesome5FreeSolid:pixelsize=12;1
-font-2 = FontAwesome5FreeRegular:pixelsize=12;1
-font-3 = FontAwesome5Brands:pixelsize=8;1
-font-4 = FiraCode-Regular:pixelsize=12
+font-0 = Overpass:size=16
+font-1 = FontAwesome5FreeSolid:pixelsize=16;1
+font-2 = FontAwesome5FreeRegular:pixelsize=16;1
+font-3 = FontAwesome5Brands:pixelsize=12;1
+font-4 = FiraCode-Regular:pixelsize=16
 # for nerd icon
-font-5 = "JetBrainsMono Nerd Font:size=16;5"
+font-5 = JetBrainsMono Nerd Font:size=16;3
 # for Chinese font
-font-6 = "GlowSansSC Normal Book:size=12"
+font-6 = GlowSansSC Normal Book:size=16
 # for weather icon
-font-7 = "Weather Icons:style=Regular:size=12;1"
+font-7 = Weather Icons:style=Regular:size=16;1
 
-# module list:
+# -- Modules  -------------------------
 # alsa: Display current volume
 # backlight: Display screen brightness
 # date: Display date
@@ -57,7 +57,7 @@ font-7 = "Weather Icons:style=Regular:size=12;1"
 # Top modules
 top-left = launcher title
 top-center = bspwm
-top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget system-bluetooth-bluetoothctl pulseaudio-control backlight network-wlan network-wired battery date
+top-right = keyboard updates-pacman-aurhelper clipmenu-widget clash-widget system-bluetooth-bluetoothctl pulseaudio-control backlight battery network-wlan network-wired date
 
 # Bottom modules
 bottom-left = powermenu weather
@@ -79,7 +79,6 @@ wlan-interface = wlan0
 wired-interface = enp0s13f0u2u4
 
 battery-full-at = 94
-
 ; $ ls -1 /sys/class/power_supply/
 battery-bat = BAT1
 battery-adp = ADP1
