@@ -427,7 +427,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'theniceboy/vim-calc'
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
