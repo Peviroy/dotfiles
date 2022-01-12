@@ -1,6 +1,7 @@
 #!/bin/bash
 
 alias arch='sudo pacman -Syyu'
+alias pyay='ALL_PROXY=socks://localhost:7891 yay'
 alias hibernate='systemctl hibernate'
 
 alias pf='pfetch'
@@ -38,5 +39,9 @@ alias tac='sudo tlp ac'
 alias p='proxychains'
 
 alias .c='cd $HOME/.config'
+alias .p='cd $HOME/Projects'
+alias .D='cd $HOME/Downloads'
+alias .d='cd $HOME/Documents'
+alias .l='cd $HOME/.local'
 
 alias optimus='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" __GL_SHOW_GRAPHICS_OSD=1'
