@@ -38,7 +38,7 @@ while true; do
 		echo " "
 		sleep 120
 	else
-		echo "✖"
+		echo ""
 		sleep 30
 	fi
 
