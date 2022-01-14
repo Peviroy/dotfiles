@@ -36,8 +36,8 @@ super + alt + l
   /usr/bin/betterlockscreen -l dim
 
 # reload polybar
-super + alt + p
-  $HOME/.config/polybar/launch.sh
+super + alt + {_,shift + }p
+  $HOME/.config/polybar/launch.sh {shape, nord}
 
 # open clipmenu
 super + alt + c
