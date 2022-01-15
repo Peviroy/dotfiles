@@ -43,3 +43,12 @@ cursor:
 
 ## Live config reload
 live_config_reload: true
+
+## Key bindings
+key_bindings:
+  - { key: PageUp, mods: Shift|Control, action: IncreaseFontSize }
+  - { key: PageDown, mods: Shift|Control, action: DecreaseFontSize }
+  - { key: W, mods: Alt, action: ScrollLineUp }
+  - { key: R, mods: Alt, action: ScrollLineDown }
+  - { key: W, mods: Shift|Alt, action: ScrollHalfPageUp }
+  - { key: R, mods: Shift|Alt, action: ScrollHalfPageDown }
