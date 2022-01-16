@@ -23,7 +23,7 @@ Gap = 4
 
 ## This option makes the whole GUI window in semi-transparent.
 ## This setting also implicitly enables the Drawborder setting
-Transparent = 0.97
+Transparent = 0.98
 
 ## Launch goneovim with full screen window size.
 # StartFullscreen = false
@@ -53,7 +53,7 @@ FontSize = 14
 ## Also, `ExtMessages` is still experimental at this time and we don't recommend setting it to true if you want stability.
 ExtCmdline   = true
 ExtPopupmenu = true
-ExtTabline   = true
+ExtTabline   = false
 ExtMessages  = false
 
 ## Goneovim has a cached rendering feature enabled to speed up the process.
