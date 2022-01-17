@@ -73,7 +73,8 @@
 		"python",
 		"vue",
 		"svelte",
-		"c"
+		"c",
+		"rust"
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",
@@ -168,6 +169,8 @@
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "all",
 	"prettier.singleQuote": false,
+	"rust-analyzer.server.path": "~/.local/bin/rust-analyzer",
+	"rust-analyzer.rustfmt.overrideCommand": ["rustfmt"],
 	"todolist.autoUpload": true,
 	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,

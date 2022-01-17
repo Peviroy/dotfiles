@@ -767,6 +767,7 @@ let g:coc_global_extensions = [
 	\ 'coc-lists',
 	\ 'coc-prettier',
 	\ 'coc-pyright',
+	\ 'coc-rust-analyzer',
 	\ 'coc-snippets',
 	\ 'coc-sourcekit',
 	\ 'coc-stylelint',
@@ -847,7 +848,6 @@ vmap <C-e> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<c-e>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = 'David Chen'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 " ===
@@ -1436,7 +1436,6 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 
-
 " ===
 " === vim-illuminate
 " ===
@@ -1511,7 +1510,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "c" },  -- list of language that will be disabled
   },
 }
 EOF
