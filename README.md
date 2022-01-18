@@ -3,14 +3,11 @@
 </p>
 
 
-
 <p align="center">
   <b>🎀 Peviroy's configuration files 🎀</b>
 </p>
+
 ---
-
-
-~
 
 
 

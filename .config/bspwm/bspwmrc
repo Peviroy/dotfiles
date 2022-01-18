@@ -60,7 +60,7 @@ wal  -ste -lq -i $HOME/Pictures/Home_Slide
 # sh $HOME/Scripts/wallblur.sh &>/dev/null &
 
 # Polybar; to make sure services already boot
-sh -c "sleep 3s; $HOME/.config/polybar/launch.sh"
+sh -c "sleep 2s; $HOME/.config/polybar/launch.sh shape"
 
 # Message notifier
 /usr/bin/dunst &
