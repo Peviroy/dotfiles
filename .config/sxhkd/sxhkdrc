@@ -43,6 +43,18 @@ super + alt + {_,shift + }p
 super + alt + c
 	CM_LAUNCHER=rofi clipmenu
 
+# apps and scratchpad manager
+alt + Tab
+	rofi -show window -window-thumbnail
+
+# grow gap
+shift + super + alt + equal
+	gap=$(bspc query --tree --monitor | jq '.windowGap'); new_gap=$(( $gap + 5  )); bspc config window_gap ${new_gap}
+
+# shrink gap
+shift + super + alt + minus
+	gap=$(bspc query --tree --monitor | jq '.windowGap'); new_gap=$(( $gap - 5  )); bspc config window_gap ${new_gap}
+
 # assign a certain keyboard shortcut to paste specific item. here my password
 super + alt + v
 	bash -c "xsel -ib < $HOME/.config/.passwd"

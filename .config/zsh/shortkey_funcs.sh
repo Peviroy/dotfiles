@@ -8,7 +8,7 @@ function yayname() {
 }
 
 #==============================================================
-#=== Note: cuase find retures the pashs of files, so it starts with './'
+#=== Note: cuase find returns the pashs of files, so it starts with './'
 # 	   and its not recommand to use ls to search, uer find instead!
 #=== Example:  
 #  	rm files starts with dot --- rmexact ".*/\.\w*"
@@ -34,3 +34,16 @@ function killScripts(){
   ps -aux | grep $1 | grep -v grep | awk '{ print $2 }' | xargs kill -9
 }
 
+#= Unzip zips and autorename them
+function unzipRenameRemove() {
+	unzip -O GBK $1
+	rm -rf $1
+	echo $1 | grep -ohE "[0-9]+-[0-9]+" | awk 'NR==1' | xargs -I '{}' mv $(basename $1 .zip) '{}'
+}
+
+function forFind() {
+	for i in $(find . -regex $1);
+	do
+		$2 "$i"
+	done
+}
