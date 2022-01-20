@@ -342,6 +342,7 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " Opening a terminal window
 noremap <LEADER>/ :set splitright<CR>:vsplit<CR>:vertical res -21<CR>:term<CR>
+noremap <LEADER>? :set splitbelow<CR>:split<CR>:vertical res -21<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -689,9 +690,13 @@ let g:sonokai_disable_italic_comment = 1
 let g:sonokai_better_performance = 1
 
 """ Status bar
+set statusline^=%{coc#status()}
 let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0  " dont show buffers in the tabline
+"let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab                                                    
+
 let g:airline#extensions#tabline#alt_sep = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
@@ -791,8 +796,7 @@ function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> <c-o> coc#refresh()
+inoremap <silent><expr> <c-o> coc#refresh() " trigger completion
 function! Show_documentation()
 	call CocActionAsync('highlight')
 	if (index(['vim','help'], &filetype) >= 0)
@@ -822,7 +826,7 @@ omap ac <Plug>(coc-classobj-a)
 " Useful commands
 nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD :tab sp<CR><Plug>(coc-defination)
+nmap <silent> gD :vsplit <CR><Plug>(coc-defination)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -830,12 +834,8 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>aw  <Plug>(coc-codeaction-selected)w
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 " coctodolist
 " nnoremap <leader>tn :CocCommand todolist.create<CR>
 " nnoremap <leader>tl :CocList todolist<CR>
@@ -849,6 +849,24 @@ let g:coc_snippet_next = '<c-e>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>ca  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>ce  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>co  :<C-u>CocList outline<cr>
 
 " ===
 " === vim-instant-markdown
